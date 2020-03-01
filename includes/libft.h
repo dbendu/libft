@@ -8,5 +8,7 @@
 # include "ft_buf.h"
 # include "ft_utils.h"
 # include "ft_list.h"
+# include "ft_vector.h"
+# include "ft_complex.h"
 
 #endif

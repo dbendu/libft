@@ -2,7 +2,9 @@ SRCS =			memory/*.c					\
 				string/*.c					\
 				buf/*.c						\
 				utils/*.c					\
-				list/*.c
+				list/*.c					\
+				vector/*.c					\
+				complex/*.c
 
 
 all:
