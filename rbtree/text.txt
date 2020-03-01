@@ -1,0 +1,234 @@
+
+#include "red_black_tree_private.h"
+
+/*
+* -1 means that uncle is left child and node is left child,
+*  0 means that uncle and child have different derictions,
+*  1 means that uncle is right child and node is right child
+*/
+static int			is_on_one_direction(t_node *node)
+{
+	t_node		*parent;
+	t_node		*grand;
+	t_bool		is_node_left;
+	t_bool		is_uncle_left;
+
+	parent = node->parent;
+	grand = parent->parent;
+	if (grand->left != parent)
+		is_uncle_left = TRUE;
+	else
+		is_uncle_left = FALSE;
+	if (parent->left == node)
+		is_node_left = TRUE;
+	else
+		is_node_left = FALSE;
+	if (is_node_left && is_uncle_left)
+		return (-1);
+	else if (!is_node_left && !is_uncle_left)
+		return (1);
+	else
+		return (0);
+}
+
+//
+//           ---                                             ---
+//          /   \ -- grand                                  /   \ -- grand
+//         |BLACK|                                         |BLACK|
+//         /\   /\                                         /\   /\
+//        /  ---  \                                       /  ---  \
+//       /         \                                     /         \
+//      /           \                                   /           \
+//     /             \                                 /             \
+//   NULL -- uncle   ---                             NULL -- uncle   ---
+//                  /   \ -- parent                                 /   \ -- node
+//                 | RED |                                         | RED |
+//                 /\   /\               ----\                     /\   /\
+//                /  ---  \              ----->                   /  ---  \
+//               /         \             ----/                   /         \
+//              /           \                                   /           \
+//             /             \                                 /             \
+//           ---            NULL                             NULL            ---
+//          /   \ -- node                                                   /   \ -- node
+//         | RED |                                                         | RED |
+//         /\   /\                                                         /\   /\
+//        /  ---  \                                                       /  ---  \
+//       /         \                                                     /         \
+//      /           \                                                   /           \
+//     /             \                                                 /             \
+//   NULL            NULL                                            NULL           NULL
+//
+void small_rotate_right(t_node *grand, t_node *parent, t_node *node)
+{
+	grand->right = node;
+	node->parent = grand;
+	node->right = parent;
+	parent->parent = node;
+	parent->left = NULL;
+}
+
+//
+//                                    ---                                                               ---
+//                          grand -- /   \                                                    grand -- /   \
+//                                  |BLACK|                                                           |BLACK|
+//                                  /\   /\                                                           /\   /\
+//                                 /  ---  \                                                         /  ---  \
+//                                /         \                                                       /         \
+//                               /           \                                                     /           \
+//                              /             \                                                   /             \
+//                            ---            NULL -- uncle                                      ---            NULL -- uncle
+//                 parent -- /   \                                                   parent -- /   \
+//                          | RED |                                                           | RED |
+//                          /\   /\                            ----\                          /\   /\
+//                         /  ---  \                           ----->                        /  ---  \
+//                        /         \                          ----/                        /         \
+//                       /           \                                                     /           \
+//                      /             \                                                   /             \
+//                    ---             ---                                               ---             ---
+//              C -- /   \           /   \ -- node                             node -- /   \      C -- /   \
+//                  | RED |         | RED |                                           | RED |         | RED |
+//                  /\   /\         /\   /\                                           /\   /\         /\   /\
+//                 /  ---  \       /  ---  \                                         /  ---  \       /  ---  \
+//                /         \     /         \                                       /         \     /         \
+//               /           \   /           \                                     /           \   /           \
+//              /             \ /             \                                   /             \ /             \
+//            NULL            NULL           NULL                               NULL            NULL           NULL
+//
+void small_rotate_left(t_node *grand, t_node *parent, t_node *node)
+{
+	grand->left = node;
+	node->parent = grand;
+	node->left = parent;
+	parent->parent = node;
+	parent->right = NULL;
+}
+
+//
+//                               ---                                          ---
+//                     grand -- /   \                              parent -- /   \
+//                             |BLACK|                                      |BLACK|
+//                             /\   /\                                      /\   /\
+//                            /  ---  \                                    /  ---  \
+//                           /         \                                  /         \
+//                          /           \                                /           \
+//                         /             \                              /             \
+//                       ---            NULL -- uncle                 ---             ---
+//            parent -- /   \                                node -- /   \  grand -- /   \
+//                     | RED |                                      | RED |         | RED |
+//                     /\   /\                   ---\               /\   /\         /\   /\
+//                    /  ---  \                  --->              /  ---  \       /  ---  \
+//                   /         \                 ---/             /       NULL    /         \
+//                  /           \                                /               /           \
+//                 /             \                              /               /             \
+//               ---             ---                          NULL            ---            NULL
+//      node -- /   \           /   \ -C                                     /   \
+//             | RED |         |BLACK|                                      |BLACK|
+//             /\   /\         /\   /\                                      /\   /\
+//            /  ---  \       /  ---  \                                    /  ---  \
+//           /         \     /         \                                  /         \
+//          /           \   /           \                                /           \
+//         /             \ /             \                              /             \
+//       NULL            NULL           NULL                          NULL           NULL
+//
+void					rotate_left(t_node *grand, t_node *parent, t_node *node)
+{
+	void		*temp_key;
+	void		*temp_value;
+
+	temp_key = grand->key;
+	temp_value = grand->value;
+	grand->key = node->key;
+	grand->value = node->value;
+	node->key = temp_key;
+	node->value = temp_value;
+	grand->left = node;
+	grand->right = parent;
+	node->right = NULL;
+	grand->color = BLACK;
+}
+
+//
+//                          ---                                                       ---
+//                         /   \ -- grand                                            /   \ -- node
+//                        |BLACK|                                                   |BLACK|
+//                        /\   /\                                                   /\   /\
+//                       /  ---  \                                                 /  ---  \
+//                      /         \                                               /         \
+//                     /           \                                             /           \
+//                    /             \                                           /             \
+//         uncle -- NULL            ---                                       ---             ---
+//                                 /   \ -- node                    grand -- /   \           /   \ -- parent
+//                                | RED |                                   | RED |         | RED |
+//                                /\   /\                ---\               /\   /\         /\   /\
+//                               /  ---  \               --->              /  ---  \       /  ---  \
+//                              /         \              ---/             /         \     /         \
+//                             /           \                             /           \   /           \
+//                            /             \                           /             \ /             \
+//                          NULL            ---                       NULL            NULL           NULL
+//                                         /   \ -- parent
+//                                        | RED |
+//                                        /\   /\
+//                                       /  ---  \
+//                                      /         \
+//                                     /           \
+//                                    /             \
+//                                  NULL           NULL
+//
+void					rotate_right(t_node *grand, t_node *parent, t_node *node)
+{
+	void		*temp_key;
+	void		*temp_value;
+
+	temp_key = grand->key;
+	temp_value = grand->value;
+	grand->key = node->key;
+	grand->value = node->value;
+	node->key = temp_key;
+	node->value = temp_value;
+	grand->right = node;
+	grand->left = parent;
+	node->left = NULL;
+	grand->color = BLACK;
+}
+
+static void				black_uncle_rotate(t_node *node, t_node *uncle)
+{
+	int direction;
+
+	direction = is_on_one_direction(node);
+	if (direction < 0)
+		small_rotate_right(node->parent->parent, node->parent, node);
+	else if (direction > 0)
+		small_rotate_left(node->parent->parent, node->parent, node);
+	if (node->parent->left == node)
+		rotate_right(node->parent, node, node->left);
+	else
+		rotate_left(node->parent, node->parent, node->right);
+}
+
+static void				red_uncle_rotate(t_node *node, t_node *uncle)
+{
+	while (node->color == RED)
+	{
+		node->parent->color = BLACK;
+		uncle->color = BLACK;
+		uncle->parent->color = BLACK;
+		node = uncle->parent;
+		if (!node->parent)
+			node->color = BLACK;
+		uncle = get_uncle(node);
+	}
+}
+
+void					insert_fix(t_node *node)
+{
+	t_node		*uncle;
+
+	if (!node->parent || node->parent->color == BLACK)
+		return ;
+	uncle = get_uncle(node);
+	if (!uncle || uncle->color == BLACK)
+		black_uncle_rotate(node, uncle);
+	else
+		red_uncle_rotate(node, uncle);
+}
