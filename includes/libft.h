@@ -5,5 +5,8 @@
 
 # include "ft_string.h"
 # include "ft_memory.h"
+# include "ft_buf.h"
+# include "ft_utils.h"
+# include "ft_list.h"
 
 #endif
