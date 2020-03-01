@@ -5,7 +5,8 @@ SRCS =			memory/*.c					\
 				list/*.c					\
 				vector/*.c					\
 				complex/*.c					\
-				matrix/*.c
+				matrix/*.c					\
+				sorts/*.c
 
 
 all:

@@ -10,5 +10,6 @@
 # include "ft_list.h"
 # include "ft_vector.h"
 # include "ft_complex.h"
+# include "ft_sorts.h"
 
 #endif
