@@ -4,7 +4,8 @@ SRCS =			memory/*.c					\
 				utils/*.c					\
 				list/*.c					\
 				vector/*.c					\
-				complex/*.c
+				complex/*.c					\
+				matrix/*.c
 
 
 all:
