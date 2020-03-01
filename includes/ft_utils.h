@@ -20,5 +20,6 @@ void		ft_error(const char *msg, const char *func, int code);
 int			bytes_order(void);
 int			get_next_line(const int fd, char **line);
 int			ft_atoi(const char *str);
+void		*ft_calloc(size_t elems, size_t elem_size);
 
 #endif
