@@ -11,5 +11,6 @@
 # include "ft_vector.h"
 # include "ft_complex.h"
 # include "ft_sorts.h"
+# include "ft_bits_arr.h"
 
 #endif

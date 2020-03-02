@@ -2,3 +2,6 @@
 *.a
 cmake*
 .*
+CMake*
+a.out
+main.c

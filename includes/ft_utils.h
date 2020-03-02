@@ -21,5 +21,6 @@ int			bytes_order(void);
 int			get_next_line(const int fd, char **line);
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t elems, size_t elem_size);
+char		*convert_num_to_bits_str(void *data, size_t typesize);
 
 #endif
