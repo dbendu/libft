@@ -1,21 +1,20 @@
-#include <stdio.h>
 #include "ft_bits_arr.h"
+#include "private_bits_array.h"
 #include "mode_libft.h"
 
 static void		little_endian(char *str, char *numptr)
 {
-	size_t pos;
 	int			byte;
 	int			bit;
 
-	pos = 0;
 	byte = WORD_SIZE_BYTES - 1;
 	while (byte >= 0)
 	{
 		bit = 7;
 		while (bit >= 0)
 		{
-			str[pos++] = ((numptr[byte] >> bit) & 1) + '0';
+			*str = ((numptr[byte] >> bit) & 1) + '0';
+			++str;
 			--bit;
 		}
 		--byte;
@@ -33,7 +32,7 @@ static void		big_endian(char *str, char *numptr)
 		bit = 7;
 		while (bit >= 0)
 		{
-			*str = ((numptr[byte] >> bit) & 1) + 0;
+			*str = ((numptr[byte] >> bit) & 1) + '0';
 			++str;
 			--bit;
 		}
@@ -43,12 +42,10 @@ static void		big_endian(char *str, char *numptr)
 
 static void		convert(char *str, t_int_ws *data, size_t datalen)
 {
-	int			endian;
 	size_t		cur_num;
 
-	endian = bytes_order();
 	cur_num = 0;
-	if (endian == FT_LITTLE_ENDIAN)
+	if (bytes_order() == FT_LITTLE_ENDIAN)
 	{
 		while (cur_num < datalen)
 		{
@@ -61,7 +58,8 @@ static void		convert(char *str, t_int_ws *data, size_t datalen)
 	{
 		while (cur_num < datalen)
 		{
-			big_endian(str + WORD_SIZE_BYTES + cur_num, (char*)(data + cur_num));
+			big_endian(str, (char*)(data + cur_num));
+			str += WORD_SIZE;
 			++cur_num;
 		}
 	}
@@ -69,34 +67,70 @@ static void		convert(char *str, t_int_ws *data, size_t datalen)
 
 #ifdef XMALLOC_MODE
 
-char			*barr_to_string(t_barr *barr)
+# ifdef SAFE_MODE
+
+char			*barr_to_string(t_barr *arr)
 {
 	char		*bits;
 
-	if (!barr)
-		ft_error("NULL adress", "barr_to_string", 0);
-	bits = malloc(barr->size_in_int_ws * WORD_SIZE + 1);
+	if (!arr)
+		ft_error("invalid param \"arr\": NULL", "barr_to_string", 0);
+	bits = malloc(arr->size_in_int_ws * WORD_SIZE + 1);
 	if (!bits)
 		ft_error("can\'t allocate string", "barr_to_string", 0);
-	convert(bits, barr->data, barr->size_in_int_ws);
-	bits[barr->size_in_bits] = '\0';
+	convert(bits, arr->data, arr->size_in_int_ws);
+	bits[arr->size_in_bits] = '\0';
 	return (bits);
 }
+
+# else
+
+char			*barr_to_string(t_barr *arr)
+{
+	char		*bits;
+
+	bits = malloc(arr->size_in_int_ws * WORD_SIZE + 1);
+	if (!bits)
+		ft_error("can\'t allocate string", "barr_to_string", 0);
+	convert(bits, arr->data, arr->size_in_int_ws);
+	bits[arr->size_in_bits] = '\0';
+	return (bits);
+}
+
+# endif
 
 #else
 
-char			*barr_to_string(t_barr *barr)
+# ifdef SAFE_MODE
+
+char			*barr_to_string(t_barr *arr)
 {
 	char		*bits;
 
-	if (!barr)
-		ft_error("NULL adress", "barr_to_string", 0);
-	bits = malloc(barr->size_in_int_ws * sizeof(t_int_ws) +
-														barr->size_in_int_ws);
+	if (!arr)
+		ft_error("invalid param \"arr\": NULL", "barr_to_string", 0);
+	bits = malloc(arr->size_in_int_ws * WORD_SIZE + 1);
 	if (!bits)
 		return (NULL);
-	convert(bits);
+	convert(bits, arr->data, arr->size_in_int_ws);
+	bits[arr->size_in_bits] = '\0';
 	return (bits);
 }
+
+# else
+
+char			*barr_to_string(t_barr *arr)
+{
+	char		*bits;
+
+	bits = malloc(arr->size_in_int_ws * WORD_SIZE + 1);
+	if (!bits)
+		return (NULL);
+	convert(bits, arr->data, arr->size_in_int_ws);
+	bits[arr->size_in_bits] = '\0';
+	return (bits);
+}
+
+# endif
 
 #endif

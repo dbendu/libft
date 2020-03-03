@@ -1,6 +1,20 @@
 #include "ft_bits_arr.h"
+#include "private_bits_array.h"
 
-size_t      barr_size(t_barr *arr)
+#ifdef SAFE_MODE
+
+size_t				barr_size(t_barr *arr)
+{
+	if (!arr)
+		ft_error("invalid param \"arr\": NULL", "barr_fill_truth", 0);
+	return (arr->size_in_bits);
+}
+
+#else
+
+inline size_t		barr_size(t_barr *arr)
 {
 	return (arr->size_in_bits);
 }
+
+#endif
