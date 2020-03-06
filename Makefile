@@ -6,7 +6,8 @@ SRCS =			memory/*.c					\
 				vector/*.c					\
 				complex/*.c					\
 				matrix/*.c					\
-				sorts/*.c
+				sorts/*.c					\
+				bits_array/*.c
 
 
 all:

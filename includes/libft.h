@@ -12,5 +12,6 @@
 # include "ft_complex.h"
 # include "ft_sorts.h"
 # include "ft_matrix.h"
+# include "ft_bits_arr.h"
 
 #endif
