@@ -3,27 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/01 22:00:44 by user             ###   ########.fr       */
+/*   Updated: 2020/03/06 19:27:51 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_memory.h"
 
-static void		fast_memset(void *restrict dstptr, int c, size_t bytes)
+static void		fast_memset(void *restrict dstptr, char c, size_t bytes)
 {
 	register t_int_ws	*dst;
 	t_int_ws			buf;
 	int					iter;
 
-	iter = 0;
-	while (iter < WORD_SIZE_BYTES)
-	{
-		((char*)&buf)[iter] = c;
-		++iter;
-	}
+	buf = 0;
+	iter = -1;
+	while (++iter < WORD_SIZE_BYTES)
+		buf += c << ((WORD_SIZE_BYTES - 1 - iter) * 8);
 	bytes /= WORD_SIZE_BYTES;
 	dst = (t_int_ws*)dstptr;
 	while (bytes > 1)
