@@ -3,5 +3,5 @@
 cmake*
 .*
 CMake*
-a.out
+a.out*
 main.c

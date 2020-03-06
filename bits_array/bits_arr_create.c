@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bits_arr_create.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/06 17:06:49 by dbendu            #+#    #+#             */
+/*   Updated: 2020/03/06 18:16:34 by dbendu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_bits_arr.h"
 #include "private_bits_array.h"
 
@@ -57,13 +69,10 @@ t_barr			*barr_create(size_t bits)
 	if (!barr)
 		return (NULL);
 	barr->size_in_bits = bits;
-	barr->size_in_int_ws = bits / WORD_SIZE_BYTES + 1;
+	barr->size_in_int_ws = bits / WORD_SIZE + ((bits & (WORD_SIZE - 1)) != 0);
 	barr->data = malloc(barr->size_in_int_ws * sizeof(t_int_ws));
 	if (!barr->data)
-	{
-		free(barr);
-		return (NULL);
-	}
+		ft_error("can\'t allocate data in bytes array", "barr_create", 0);
 	ft_memset(barr->data, 0, barr->size_in_int_ws * sizeof(t_int_ws));
 	return (barr);
 }
@@ -78,13 +87,10 @@ t_barr			*barr_create(size_t bits)
 	if (!barr)
 		return (NULL);
 	barr->size_in_bits = bits;
-	barr->size_in_int_ws = bits / WORD_SIZE_BYTES + 1;
+	barr->size_in_int_ws = bits / WORD_SIZE + ((bits & (WORD_SIZE - 1)) != 0);
 	barr->data = malloc(barr->size_in_int_ws * sizeof(t_int_ws));
 	if (!barr->data)
-	{
-		free(barr);
-		return (NULL);
-	}
+		ft_error("can\'t allocate data in bytes array", "barr_create", 0);
 	ft_memset(barr->data, 0, barr->size_in_int_ws * sizeof(t_int_ws));
 	return (barr);
 }
