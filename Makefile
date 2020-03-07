@@ -1,13 +1,13 @@
-SRCS =			memory/*.c					\
-				string/*.c					\
-				buf/*.c						\
-				utils/*.c					\
-				list/*.c					\
-				vector/*.c					\
+SRCS =			bits_array/*.c				\
 				complex/*.c					\
+				memory/*.c					\
+				string/*.c					\
+				vector/*.c					\
 				matrix/*.c					\
+				utils/*.c					\
 				sorts/*.c					\
-				bits_array/*.c
+				list/*.c					\
+				buf/*.c						
 
 
 all:

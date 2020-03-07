@@ -6,11 +6,44 @@
 /*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 21:34:30 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 21:34:30 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/07 13:19:06 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_matrix.h"
+
+#ifdef SAFE_MODE
+
+static void		check_args(size_t rows, size_t cols, size_t type_size)
+{
+	if (!rows)
+		ft_error("invalid param \"rows\": cannot be 0", "matrix_create", 0);
+	if (!cols)
+		ft_error("invalid param \"cols\": cannot be 0", "matrix_create", 0);
+	if (!type_size)
+		ft_error("invalid param \"type_size\": cannot be 0",
+				"matrix_create", 0);
+}
+
+void			*matrix_create(size_t rows, size_t cols, size_t type_size)
+{
+	size_t		**matrix;
+	size_t		iter;
+
+	check_args(rows, cols, type_size);
+	matrix = vec_create(rows, sizeof(void*));
+	vec_reserve(&matrix, rows);
+	iter = 0;
+	while (iter < rows)
+	{
+		matrix[iter] = vec_create(cols, type_size);
+		vec_reserve(&matrix[iter], cols);
+		++iter;
+	}
+	return (matrix);
+}
+
+#else
 
 void			*matrix_create(size_t rows, size_t cols, size_t type_size)
 {
@@ -28,3 +61,5 @@ void			*matrix_create(size_t rows, size_t cols, size_t type_size)
 	}
 	return (matrix);
 }
+
+#endif

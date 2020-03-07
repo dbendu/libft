@@ -8,7 +8,7 @@
 # include "ft_string.h"
 # include "mode_libft.h"
 
-void					buf_create(int fd, size_t size);
+void					buf_create(int fd, size_t bufsize);
 size_t					buf_destroy(void);
 
 char					*buf_get(size_t *symbols_in_buf);
