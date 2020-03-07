@@ -38,7 +38,11 @@ typedef unsigned long		t_ul;
 typedef unsigned long long	t_ull;
 typedef unsigned char		t_bool;
 
+#ifndef TRUE
 # define TRUE				(1)
+#endif
+#ifndef FALSE
 # define FALSE				(0)
+#endif
 
 #endif
