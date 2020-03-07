@@ -6,7 +6,7 @@
 /*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 19:31:44 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/07 14:31:33 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,32 @@ static t_vector		*vec_expand(t_vector *vector)
 	return (new_vector);
 }
 
+#ifdef SAFE_MODE
+
+void				vec_pushback(void *vecptr, void *elem)
+{
+	t_vector		*vector;
+
+	if (!vecptr)
+		ft_error("invalid param \"vecptr\": cannot be NULL)",
+				"vec_pushback", 0);
+	if (!elem)
+		ft_error("invalid param \"elem\": cannot be NULL)",
+				"vec_pushback", 0);
+	vector = *(void**)vecptr - sizeof(t_vector);
+	if (!vector->capacity)
+	{
+		vector = vec_expand(vector);
+		*(void**)vecptr = vector->data;
+	}
+	ft_memcpy(vector->data + vector->size * vector->typesize,
+				elem, vector->typesize);
+	++vector->size;
+	--vector->capacity;
+}
+
+#else
+
 void				vec_pushback(void *vecptr, void *elem)
 {
 	t_vector		*vector;
@@ -45,3 +71,5 @@ void				vec_pushback(void *vecptr, void *elem)
 	++vector->size;
 	--vector->capacity;
 }
+
+#endif

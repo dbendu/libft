@@ -3,7 +3,9 @@
 
 # include <stdlib.h>
 # include "ft_types.h"
+# include "ft_utils.h"
 # include "ft_memory.h"
+# include "mode_libft.h"
 
 void		*vec_create(size_t elems, size_t type_size);
 void		vec_destroy(void *vecptr);
