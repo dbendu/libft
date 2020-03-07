@@ -6,7 +6,7 @@
 /*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 21:34:29 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:01:36 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/07 14:44:10 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			*matrix_copy(void *matrixptr)
 	size_t		iter;
 
 	if (!matrixptr)
-		ft_error("invalid param \"matrixptr\": NULL", "matrix_add_col", 0);
+		ft_error("invalid param \"matrixptr\": NULL", "matrix_copy", 0);
 	matrix = *(size_t***)matrixptr;
 	rows = vec_size(&matrix);
 	new_matrix = vec_create(rows, sizeof(void*));

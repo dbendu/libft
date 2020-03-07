@@ -16,8 +16,9 @@ void					buf_flush(void);
 void					buf_flush_to(int fd);
 size_t					buf_printed_symbols_count(void);
 
-void					buf_add_str(const char *str);
 void					buf_add_chr(char chr, size_t times);
+void					buf_add_str(const char *str);
+void					buf_add_strn(const char *str, size_t strlen);
 void					buf_add_line(char *str);
 
 

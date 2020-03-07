@@ -6,7 +6,7 @@
 /*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 23:30:44 by user              #+#    #+#             */
-/*   Updated: 2020/03/07 12:32:34 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/07 14:37:41 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ size_t			buf_printed_symbols_count(void)
 
 #else
 
-size_t			buf_printed_symbols_count(void)
+inline size_t	buf_printed_symbols_count(void)
 {
-	t_buf		*buf;
-
-	buf = *get_buf();
-	return (buf->printed);
+	return ((*get_buf())->printed);
 }
 
 #endif

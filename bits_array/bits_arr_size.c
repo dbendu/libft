@@ -6,7 +6,7 @@
 /*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 17:06:50 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 17:06:50 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/07 14:35:10 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 size_t				barr_size(t_barr *arr)
 {
 	if (!arr)
-		ft_error("invalid param \"arr\": NULL", "barr_fill_truth", 0);
+		ft_error("invalid param \"arr\": NULL", "barr_size", 0);
 	return (arr->size_in_bits);
 }
 

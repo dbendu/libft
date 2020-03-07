@@ -6,7 +6,7 @@
 /*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 17:06:42 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 17:06:42 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/07 14:35:21 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			barr_fill_false(t_barr *arr)
 	size_t		iter;
 
 	if (!arr)
-		ft_error("invalid param \"arr\": NULL", "barr_fill_truth", 0);
+		ft_error("invalid param \"arr\": NULL", "barr_fill_false", 0);
 	iter = 0;
 	while (iter < arr->size_in_int_ws)
 	{
