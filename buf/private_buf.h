@@ -6,7 +6,7 @@
 /*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:19 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 19:29:45 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/07 12:45:25 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PRIVATE_BUF_H
 
 # include "ft_buf.h"
+
+# define DEFAULT_BUFSIZE		4096
 
 typedef struct			s_buf
 {

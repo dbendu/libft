@@ -6,7 +6,7 @@
 /*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 17:06:49 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 18:16:34 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/07 12:35:55 by dbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ t_barr			*barr_create(size_t bits)
 	barr->size_in_int_ws = bits / WORD_SIZE + ((bits & (WORD_SIZE - 1)) != 0);
 	barr->data = malloc(barr->size_in_int_ws * sizeof(t_int_ws));
 	if (!barr->data)
-		ft_error("can\'t allocate data in bytes array", "barr_create", 0);
+	{
+		free(barr);
+		return (NULL);
+	}
 	ft_memset(barr->data, 0, barr->size_in_int_ws * sizeof(t_int_ws));
 	return (barr);
 }
@@ -90,7 +93,10 @@ t_barr			*barr_create(size_t bits)
 	barr->size_in_int_ws = bits / WORD_SIZE + ((bits & (WORD_SIZE - 1)) != 0);
 	barr->data = malloc(barr->size_in_int_ws * sizeof(t_int_ws));
 	if (!barr->data)
-		ft_error("can\'t allocate data in bytes array", "barr_create", 0);
+	{
+		free(barr);
+		return (NULL);
+	}
 	ft_memset(barr->data, 0, barr->size_in_int_ws * sizeof(t_int_ws));
 	return (barr);
 }
