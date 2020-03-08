@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bits_arr_fill_truth.c                              :+:      :+:    :+:   */
+/*   bits_arr_fill_true.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 17:06:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 18:19:28 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/08 12:37:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 #ifdef SAFE_MODE
 
-void			barr_fill_truth(t_barr *arr)
+void			barr_fill_true(t_barr *arr)
 {
 	size_t		iter;
 
 	if (!arr)
-		ft_error("invalid param \"arr\": NULL", "barr_fill_truth", 0);
+		ft_error("invalid param \"arr\": NULL", "barr_fill_true", 0);
 	iter = 0;
 	while (iter < arr->size_in_int_ws)
 	{
@@ -31,7 +31,7 @@ void			barr_fill_truth(t_barr *arr)
 
 #else
 
-void			barr_fill_truth(t_barr *arr)
+void			barr_fill_true(t_barr *arr)
 {
 	size_t		iter;
 

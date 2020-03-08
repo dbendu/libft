@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buf_printed_symbols_count.c                        :+:      :+:    :+:   */
+/*   buf_printed_count.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/01 23:30:44 by user              #+#    #+#             */
-/*   Updated: 2020/03/07 14:37:41 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/08 12:37:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 #ifdef SAFE_MODE
 
-size_t			buf_printed_symbols_count(void)
+size_t			buf_printed_count(void)
 {
 	t_buf		*buf;
 
 	buf = *get_buf();
 	if (!buf)
-		ft_error("buf doesn\'t created", "buf_printed_symbols_count", 0);
+		ft_error("buf doesn\'t created", "buf_printed_count", 0);
 	return (buf->printed);
 }
 
 #else
 
-inline size_t	buf_printed_symbols_count(void)
+inline size_t	buf_printed_count(void)
 {
 	return ((*get_buf())->printed);
 }

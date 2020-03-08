@@ -13,7 +13,7 @@ void					barr_destroy(t_barr *arr);
 void					barr_set_as_true(t_barr *arr, size_t bit_index);
 void					barr_set_as_false(t_barr *arr, size_t bit_index);
 void					barr_fill_false(t_barr *arr);
-void					barr_fill_truth(t_barr *arr);
+void					barr_fill_true(t_barr *arr);
 
 t_bool					barr_valueof(t_barr *arr, size_t index);
 size_t					barr_size(t_barr *arr);

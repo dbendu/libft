@@ -14,7 +14,7 @@ size_t					buf_destroy(void);
 char					*buf_get(size_t *symbols_in_buf);
 void					buf_flush(void);
 void					buf_flush_to(int fd);
-size_t					buf_printed_symbols_count(void);
+size_t					buf_printed_count(void);
 
 void					buf_add_chr(char chr, size_t times);
 void					buf_add_str(const char *str);
