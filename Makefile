@@ -32,6 +32,7 @@ SRCS_BUF =			buf_get.c					\
 SRCS_COMPLEX =		complex_add.c				\
 					complex_div.c				\
 					complex_sub.c				\
+					complex_abs.c				\
 					complex_init.c				\
 					complex_mult.c				\
 					complex_pow2.c				\
@@ -196,7 +197,7 @@ INCLUDES =			includes				\
 #									FLAGS
 #-------------------------------------------------------------------------------
 
-FLAGS =			-Wall -Werror -Wextra $(addprefix -I , $(INCLUDES))
+FLAGS =			-g -Wall -Werror -Wextra $(addprefix -I , $(INCLUDES))
 
 FLAGS_DEBUG =	-g -Wall -Werror -Wextra $(addprefix -I , $(INCLUDES))
 
@@ -214,70 +215,70 @@ FLAGS_DEBUG =	-g -Wall -Werror -Wextra $(addprefix -I , $(INCLUDES))
 all: $(NAME)
 
 $(NAME): $(DIR_OBJS) $(OBJ_ALL)
-	ar rcs $(NAME) $(OBJ_ALL)
-	ranlib $(NAME)
+	@ar rcs $(NAME) $(OBJ_ALL)
+	@ranlib $(NAME)
 
 #-------------------------------------------------------------------------------
 #						ALL NEEDFUL DIRECTORIES CREATING
 #-------------------------------------------------------------------------------
 
 $(DIR_OBJS):
-	mkdir -p $(DIR_OBJS)
-	mkdir -p $(DIR_BARR_OBJS)
-	mkdir -p $(DIR_BUF_OBJS)
-	mkdir -p $(DIR_COMPLEX_OBJS)
-	mkdir -p $(DIR_LIST_OBJS)
-	mkdir -p $(DIR_MATRIX_OBJS)
-	mkdir -p $(DIR_MEMORY_OBJS)
-	mkdir -p $(DIR_SORTS_OBJS)
-	mkdir -p $(DIR_STRING_OBJS)
-	mkdir -p $(DIR_UTILS_OBJS)
-	mkdir -p $(DIR_VECTOR_OBJS)
+	@mkdir -p $(DIR_OBJS)
+	@mkdir -p $(DIR_BARR_OBJS)
+	@mkdir -p $(DIR_BUF_OBJS)
+	@mkdir -p $(DIR_COMPLEX_OBJS)
+	@mkdir -p $(DIR_LIST_OBJS)
+	@mkdir -p $(DIR_MATRIX_OBJS)
+	@mkdir -p $(DIR_MEMORY_OBJS)
+	@mkdir -p $(DIR_SORTS_OBJS)
+	@mkdir -p $(DIR_STRING_OBJS)
+	@mkdir -p $(DIR_UTILS_OBJS)
+	@mkdir -p $(DIR_VECTOR_OBJS)
 
 #-------------------------------------------------------------------------------
 #							COMPILING OBJECT FILES
 #-------------------------------------------------------------------------------
 
 $(DIR_BARR_OBJS)/%.o: $(DIR_BARR_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_BUF_OBJS)/%.o: $(DIR_BUF_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_COMPLEX_OBJS)/%.o: $(DIR_COMPLEX_SRCS)/%.c $(INCLUDES)
 	gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_LIST_OBJS)/%.o: $(DIR_LIST_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_MATRIX_OBJS)/%.o: $(DIR_MATRIX_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_MEMORY_OBJS)/%.o: $(DIR_MEMORY_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_SORTS_OBJS)/%.o: $(DIR_SORTS_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_STRING_OBJS)/%.o: $(DIR_STRING_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_UTILS_OBJS)/%.o: $(DIR_UTILS_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_VECTOR_OBJS)/%.o: $(DIR_VECTOR_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 #-------------------------------------------------------------------------------
 #							RECOMPILE PROJECT
 #-------------------------------------------------------------------------------
 
 clean:
-	rm -rf $(DIR_OBJS)
+	@rm -rf $(DIR_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f $(NAME_DEBUG)
+	@rm -f $(NAME)
+	@rm -f $(NAME_DEBUG)
 
 re: fclean all
 

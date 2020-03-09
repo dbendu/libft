@@ -28,5 +28,6 @@ t_complex		complex_mult(const t_complex *c1, const t_complex *c2);
 
 t_complex		complex_pow2(const t_complex *c);
 t_complex		complex_pow3(const t_complex *c);
+long double		complex_abs(const t_complex *c);
 
 #endif
