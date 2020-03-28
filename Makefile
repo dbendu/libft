@@ -76,7 +76,8 @@ SRCS_STRING =		ft_strchr.c					\
 					ft_isdigit.c				\
 					ft_isspace.c				\
 
-SRCS_UTILS =		ft_min.c					\
+SRCS_UTILS =		gnl.c						\
+					ft_min.c					\
 					ft_max.c					\
 					ft_swap.c					\
 					ft_atoi.c					\
@@ -86,8 +87,8 @@ SRCS_UTILS =		ft_min.c					\
 					ft_memitoa.c				\
 					sizeof_num.c				\
 					bytes_order.c				\
-					get_next_line.c				\
 					convert_to_bits.c			\
+					private_gnl_list.c
 
 SRCS_VECTOR =		vec_copy.c					\
 					vec_size.c					\

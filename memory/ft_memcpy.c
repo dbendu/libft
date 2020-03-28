@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:15 by dbendu            #+#    #+#             */
-/*   Updated: 2020/02/28 21:19:02 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 13:57:22 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ void	*ft_memcpy(void *restrict dstptr,
 {
 	void		*dst;
 
+	dst = dstptr;
 	if (bytes > 64)
 	{
 		fast_memcpy(dstptr, srcptr, bytes & ~(WORD_SIZE_BYTES - 1));
 		dstptr += bytes & ~(WORD_SIZE_BYTES - 1);
+		srcptr += bytes & ~(WORD_SIZE_BYTES - 1);
 		bytes &= (WORD_SIZE_BYTES - 1);
 	}
-	dst = dstptr;
 	while (bytes > 1)
 	{
 		*(char*)dstptr++ = *(char*)srcptr++;
