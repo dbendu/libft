@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_rows.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 21:34:30 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:43:42 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 10:36:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 #ifdef SAFE_MODE
 
-size_t			matrix_rows(void *matrixptr)
+size_t			matrix_rows(t_matrix matrix)
 {
-	if (!matrixptr)
+	if (!matrix)
 		ft_error("invalid param \"matrixptr\": NULL", "matrix_rows", 0);
-	return (vec_size(matrixptr));
+	return (vec_size(matrix));
 }
 
 #else
 
-inline size_t	matrix_rows(void *matrixptr)
+inline size_t	matrix_rows(t_matrix matrix)
 {
-	return (vec_size(matrixptr));
+	return (vec_size(matrix));
 }
 
 #endif

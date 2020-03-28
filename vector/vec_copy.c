@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_copy.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:44 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:29:49 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 10:30:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,44 @@
 
 #ifdef SAFE_MODE
 
-void			*vec_copy(void *vecptr, t_bool save_capacity)
+void			*vec_copy(t_vector vector, t_bool save_capacity)
 {
-	t_vector	*vector;
-	t_vector	*new_vector;
+	t_vector_s	*vec;
+	t_vector_s	*new_vector;
 	size_t		new_size;
 
-	if (!vecptr)
+	if (!vector)
 		ft_error("invalid param \"vecptr\": cannot be NULL)",
 				"vec_copy", 0);
-	vector = *(void**)vecptr - sizeof(t_vector);
-	new_size = vector->size;
+	vec = *(void**)vector - sizeof(t_vector_s);
+	new_size = vec->size;
 	if (save_capacity)
-		new_size += vector->capacity;
-	new_vector = vec_create(new_size, vector->typesize) - sizeof(t_vector);
-	new_vector->size = vector->size;
-	new_vector->capacity = new_size - vector->size;
-	new_vector->data = (void*)new_vector + sizeof(t_vector);
-	ft_memcpy(new_vector->data, vector->data, vector->size * vector->typesize);
+		new_size += vec->capacity;
+	new_vector = vec_create(new_size, vec->typesize) - sizeof(t_vector_s);
+	new_vector->size = vec->size;
+	new_vector->capacity = new_size - vec->size;
+	new_vector->data = (void*)new_vector + sizeof(t_vector_s);
+	ft_memcpy(new_vector->data, vec->data, vec->size * vec->typesize);
 	return (new_vector->data);
 }
 
 #else
 
-void			*vec_copy(void *vecptr, t_bool save_capacity)
+void			*vec_copy(t_vector vector, t_bool save_capacity)
 {
-	t_vector	*vector;
-	t_vector	*new_vector;
+	t_vector_s	*vec;
+	t_vector_s	*new_vector;
 	size_t		new_size;
 
-	vector = *(void**)vecptr - sizeof(t_vector);
-	new_size = vector->size;
+	vec = *(void**)vector - sizeof(t_vector_s);
+	new_size = vec->size;
 	if (save_capacity)
-		new_size += vector->capacity;
-	new_vector = vec_create(new_size, vector->typesize) - sizeof(t_vector);
-	new_vector->size = vector->size;
-	new_vector->capacity = new_size - vector->size;
-	new_vector->data = (void*)new_vector + sizeof(t_vector);
-	ft_memcpy(new_vector->data, vector->data, vector->size * vector->typesize);
+		new_size += vec->capacity;
+	new_vector = vec_create(new_size, vec->typesize) - sizeof(t_vector_s);
+	new_vector->size = vec->size;
+	new_vector->capacity = new_size - vec->size;
+	new_vector->data = (void*)new_vector + sizeof(t_vector_s);
+	ft_memcpy(new_vector->data, vec->data, vec->size * vec->typesize);
 	return (new_vector->data);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 21:34:30 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 13:19:06 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 10:39:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static void		check_args(size_t rows, size_t cols, size_t type_size)
 
 void			*matrix_create(size_t rows, size_t cols, size_t type_size)
 {
-	size_t		**matrix;
-	size_t		iter;
+	t_matrix_sizet	matrix;
+	size_t			iter;
 
 	check_args(rows, cols, type_size);
-	matrix = vec_create(rows, sizeof(void*));
+	matrix = vec_create(rows, sizeof(t_matrix));
 	vec_reserve(&matrix, rows);
 	iter = 0;
 	while (iter < rows)
@@ -47,10 +47,10 @@ void			*matrix_create(size_t rows, size_t cols, size_t type_size)
 
 void			*matrix_create(size_t rows, size_t cols, size_t type_size)
 {
-	size_t		**matrix;
-	size_t		iter;
+	t_matrix_sizet	matrix;
+	size_t			iter;
 
-	matrix = vec_create(rows, sizeof(void*));
+	matrix = vec_create(rows, sizeof(t_matrix));
 	vec_reserve(&matrix, rows);
 	iter = 0;
 	while (iter < rows)

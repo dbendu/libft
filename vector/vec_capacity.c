@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_capacity.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:45 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:31:04 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 10:12:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 #ifdef SAFE_MODE
 
-size_t				vec_capacity(void *vecptr)
+size_t				vec_capacity(t_vector vector)
 {
-	if (!vecptr)
+	if (!vector)
 		ft_error("invalid param \"vecptr\": cannot be NULL)",
 				"vec_copy", 0);
-	return ((t_vector*)(*(void**)vecptr - sizeof(t_vector)))->capacity;
+	return ((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->capacity;
 }
 
 #else
 
-inline size_t		vec_capacity(void *vecptr)
+inline size_t		vec_capacity(t_vector vector)
 {
-	return ((t_vector*)(*(void**)vecptr - sizeof(t_vector)))->capacity;
+	return ((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->capacity;
 }
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_clear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 21:34:29 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:44:52 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 10:42:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,46 @@
 
 #ifdef SAFE_MODE
 
-void			matrix_clear(void *matrixptr)
+void			matrix_clear(t_matrix matrix)
 {
-	size_t		**matrix;
-	size_t		rows;
-	size_t		cols;
-	size_t		iter;
-	size_t		typesize;
+	t_matrix_sizet	m;
+	size_t			rows;
+	size_t			cols;
+	size_t			iter;
+	size_t			typesize;
 
-	if (!matrixptr)
+	if (!matrix)
 		ft_error("invalid param \"matrixptr\": NULL", "matrix_clear", 0);
-	matrix = *(size_t***)matrixptr;
-	rows = matrix_rows(&matrix);
-	cols = matrix_cols(&matrix);
-	typesize = vec_typesize(&matrix[0]);
+	m = *(size_t***)matrix;
+	rows = matrix_rows(&m);
+	cols = matrix_cols(&m);
+	typesize = vec_typesize(&m[0]);
 	iter = 0;
 	while (iter < rows)
 	{
-		ft_memset(matrix[iter], 0, typesize * cols);
+		ft_memset(m[iter], 0, typesize * cols);
 		++iter;
 	}
 }
 
 #else
 
-void			matrix_clear(void *matrixptr)
+void			matrix_clear(t_matrix matrix)
 {
-	size_t		**matrix;
-	size_t		rows;
-	size_t		cols;
-	size_t		iter;
-	size_t		typesize;
+	t_matrix_sizet	m;
+	size_t			rows;
+	size_t			cols;
+	size_t			iter;
+	size_t			typesize;
 
-	matrix = *(size_t***)matrixptr;
-	rows = matrix_rows(&matrix);
-	cols = matrix_cols(&matrix);
-	typesize = vec_typesize(&matrix[0]);
+	m = *(size_t***)matrix;
+	rows = matrix_rows(&m);
+	cols = matrix_cols(&m);
+	typesize = vec_typesize(&m[0]);
 	iter = 0;
 	while (iter < rows)
 	{
-		ft_memset(matrix[iter], 0, typesize * cols);
+		ft_memset(m[iter], 0, typesize * cols);
 		++iter;
 	}
 }

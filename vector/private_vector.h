@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   private_vector.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:45 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 19:31:45 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 09:59:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ typedef struct			s_vector
 	size_t				capacity;
 	size_t				typesize;
 	void				*data;
-}						t_vector;
+}						t_vector_s;
 
 #endif

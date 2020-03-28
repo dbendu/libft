@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_reserve.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:21:46 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 10:27:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,34 @@
 
 #ifdef SAFE_MODE
 
-void			vec_reserve(void *vecptr, size_t elems)
+void			vec_reserve(t_vector vector, size_t elems)
 {
-	t_vector	*vector;
+	t_vector_s	*vec;
 	size_t		total_cells;
 
-	if (!vecptr)
+	if (!vector)
 		ft_error("invalid param \"vecptr\": cannot be NULL)",
 				"vec_reserve", 0);
-	vector = *(void**)vecptr - sizeof(t_vector);
-	total_cells = vector->capacity + vector->size;
+	vec = *(void**)vector - sizeof(t_vector_s);
+	total_cells = vec->capacity + vec->size;
 	if (elems > total_cells)
 		ft_error("invalid param \"vecptr\": don\'t have enought memory",
 				"vec_reserve", 0);
-	vector->size = elems;
-	vector->capacity = total_cells - elems;
+	vec->size = elems;
+	vec->capacity = total_cells - elems;
 }
 
 #else
 
-void			vec_reserve(void *vecptr, size_t elems)
+void			vec_reserve(t_vector vector, size_t elems)
 {
-	t_vector	*vector;
+	t_vector_s	*vec;
 	size_t		total_cells;
 
-	vector = *(void**)vecptr - sizeof(t_vector);
-	total_cells = vector->capacity + vector->size;
-	vector->size = elems;
-	vector->capacity = total_cells - elems;
+	vec = *(void**)vector - sizeof(t_vector_s);
+	total_cells = vec->capacity + vec->size;
+	vec->size = elems;
+	vec->capacity = total_cells - elems;
 }
 
 #endif

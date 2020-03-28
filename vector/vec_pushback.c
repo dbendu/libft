@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   vec_pushback.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:31:33 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/28 10:24:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 #include "private_vector.h"
 
-static t_vector		*vec_expand(t_vector *vector)
+static t_vector_s		*vec_expand(t_vector_s *vector)
 {
-	t_vector		*new_vector;
+	t_vector_s		*new_vector;
 	size_t			new_datasize;
 
 	if (vector->size < 64)
 		new_datasize = vector->size + 16;
 	else
 		new_datasize = vector->size * 1.5;
-	new_vector = vec_create(new_datasize, vector->typesize) - sizeof(t_vector);
+	new_vector = vec_create(new_datasize, vector->typesize) -
+															sizeof(t_vector_s);
 	new_vector->size = vector->size;
 	new_vector->capacity = new_datasize - vector->size;
 	ft_memcpy(new_vector->data, vector->data, vector->size * vector->typesize);
@@ -32,44 +33,44 @@ static t_vector		*vec_expand(t_vector *vector)
 
 #ifdef SAFE_MODE
 
-void				vec_pushback(void *vecptr, void *elem)
+void				vec_pushback(t_vector vector, void *elem)
 {
-	t_vector		*vector;
+	t_vector_s		*vec;
 
-	if (!vecptr)
+	if (!vector)
 		ft_error("invalid param \"vecptr\": cannot be NULL)",
 				"vec_pushback", 0);
 	if (!elem)
 		ft_error("invalid param \"elem\": cannot be NULL)",
 				"vec_pushback", 0);
-	vector = *(void**)vecptr - sizeof(t_vector);
-	if (!vector->capacity)
+	vec = *(void**)vector - sizeof(t_vector_s);
+	if (!vec->capacity)
 	{
-		vector = vec_expand(vector);
-		*(void**)vecptr = vector->data;
+		vec = vec_expand(vec);
+		*(void**)vector = vec->data;
 	}
-	ft_memcpy(vector->data + vector->size * vector->typesize,
-				elem, vector->typesize);
-	++vector->size;
-	--vector->capacity;
+	ft_memcpy(vec->data + vec->size * vec->typesize,
+				elem, vec->typesize);
+	++vec->size;
+	--vec->capacity;
 }
 
 #else
 
-void				vec_pushback(void *vecptr, void *elem)
+void				vec_pushback(t_vector vector, void *elem)
 {
-	t_vector		*vector;
+	t_vector_s		*vec;
 
-	vector = *(void**)vecptr - sizeof(t_vector);
-	if (!vector->capacity)
+	vec = *(void**)vector - sizeof(t_vector_s);
+	if (!vec->capacity)
 	{
-		vector = vec_expand(vector);
-		*(void**)vecptr = vector->data;
+		vec = vec_expand(vec);
+		*(void**)vector = vec->data;
 	}
-	ft_memcpy(vector->data + vector->size * vector->typesize,
-				elem, vector->typesize);
-	++vector->size;
-	--vector->capacity;
+	ft_memcpy(vec->data + vec->size * vec->typesize,
+				elem, vec->typesize);
+	++vec->size;
+	--vec->capacity;
 }
 
 #endif
