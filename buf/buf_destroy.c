@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buf_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:22 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 13:09:57 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/03/31 13:49:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ size_t			buf_destroy(void)
 	buf = get_buf();
 	if (!*buf)
 		ft_error("buf was not allocated", "buf_destroy", 0);
-	buf_flush();
 	printed_symbols = (*buf)->printed;
 	free(*buf);
 	*buf = NULL;
