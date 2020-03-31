@@ -100,6 +100,12 @@ SRCS_VECTOR =		vec_copy.c					\
 					vec_pushback.c				\
 					vec_shrink_to_fit.c			\
 
+SRCS_WARNING =		warning_add.c				\
+					warning_create.c			\
+					warning_destroy.c			\
+					warning_print.c				\
+					private_get_warning_list.c
+
 #-------------------------------------------------------------------------------
 #							SOURCE DIRECTORIES
 #-------------------------------------------------------------------------------
@@ -123,6 +129,8 @@ DIR_STRING_SRCS =		string
 DIR_UTILS_SRCS =		utils
 
 DIR_VECTOR_SRCS =		vector
+
+DIR_WARNING_SRCS =		warning
 
 #-------------------------------------------------------------------------------
 #							OBJECTS DIRECTORIES
@@ -150,6 +158,8 @@ DIR_UTILS_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_UTILS_SRCS))
 
 DIR_VECTOR_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_VECTOR_SRCS))
 
+DIR_WARNING_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_WARNING_SRCS))
+
 #-------------------------------------------------------------------------------
 #						CONVERT SOURCES TO OBJECTS
 #-------------------------------------------------------------------------------
@@ -174,6 +184,8 @@ OBJ_UTILS =			$(addprefix $(DIR_UTILS_OBJS)/, $(SRCS_UTILS:.c=.o))
 
 OBJ_VECTOR =		$(addprefix $(DIR_VECTOR_OBJS)/, $(SRCS_VECTOR:.c=.o))
 
+OBJ_WARNING =		$(addprefix $(DIR_WARNING_OBJS)/, $(SRCS_WARNING:.c=.o))
+
 OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_BARR)						\
 					$(OBJ_LIST)						\
@@ -183,7 +195,8 @@ OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_MEMORY)					\
 					$(OBJ_STRING)					\
 					$(OBJ_VECTOR)					\
-					$(OBJ_COMPLEX)
+					$(OBJ_COMPLEX)					\
+					$(OBJ_WARNING)
 
 #-------------------------------------------------------------------------------
 #									INCLUDES
@@ -192,7 +205,8 @@ OBJ_ALL =			$(OBJ_BUF)						\
 INCLUDES =			includes				\
 					bits_array				\
 					buf						\
-					vector
+					vector					\
+					warning
 
 #-------------------------------------------------------------------------------
 #									FLAGS
@@ -235,6 +249,7 @@ $(DIR_OBJS):
 	@mkdir -p $(DIR_STRING_OBJS)
 	@mkdir -p $(DIR_UTILS_OBJS)
 	@mkdir -p $(DIR_VECTOR_OBJS)
+	@mkdir -p $(DIR_WARNING_OBJS)
 
 #-------------------------------------------------------------------------------
 #							COMPILING OBJECT FILES
@@ -247,7 +262,7 @@ $(DIR_BUF_OBJS)/%.o: $(DIR_BUF_SRCS)/%.c $(INCLUDES)
 	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_COMPLEX_OBJS)/%.o: $(DIR_COMPLEX_SRCS)/%.c $(INCLUDES)
-	gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_LIST_OBJS)/%.o: $(DIR_LIST_SRCS)/%.c $(INCLUDES)
 	@gcc $(FLAGS) -o $@ -c $<
@@ -268,6 +283,9 @@ $(DIR_UTILS_OBJS)/%.o: $(DIR_UTILS_SRCS)/%.c $(INCLUDES)
 	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_VECTOR_OBJS)/%.o: $(DIR_VECTOR_SRCS)/%.c $(INCLUDES)
+	@gcc $(FLAGS) -o $@ -c $<
+
+$(DIR_WARNING_OBJS)/%.o: $(DIR_WARNING_SRCS)/%.c $(INCLUDES)
 	@gcc $(FLAGS) -o $@ -c $<
 
 #-------------------------------------------------------------------------------

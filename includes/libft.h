@@ -13,5 +13,6 @@
 # include "ft_sorts.h"
 # include "ft_matrix.h"
 # include "ft_bits_arr.h"
+# include "ft_warning.h"
 
 #endif

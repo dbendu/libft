@@ -78,7 +78,8 @@ int		gnl(const int fd, char **line, t_bool *is_newline_found)
 	storage = NULL;
 	if (check_buf(&buf, &storage, line) == __GNL_FOUNDED)
 	{
-		*is_newline_found = TRUE;
+		if (is_newline_found)
+			*is_newline_found = TRUE;
 		return (GNL_OK);
 	}
 	while ((ret = read(fd, data, GNL_BUF)) > 0)
@@ -88,7 +89,8 @@ int		gnl(const int fd, char **line, t_bool *is_newline_found)
 		if (npos != data)
 			gnl_add_node(&storage,
 						gnl_create_list(data, npos ? npos - data : ret));
-		*is_newline_found = npos ? TRUE : FALSE;
+		if (is_newline_found)
+			*is_newline_found = npos ? TRUE : FALSE;
 		if (npos)
 			break ;
 	}
