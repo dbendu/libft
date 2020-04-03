@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:15 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/28 13:57:22 by user             ###   ########.fr       */
+/*   Updated: 2020/04/03 12:37:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "ft_memory.h"
 
 /*
-* num always multiple of __WORDSIZE
+** num always multiple of __WORDSIZE
 */
+
 static void		fast_memcpy(void *restrict dstptr,
 							const void *restrict srcptr,
 							size_t num)
@@ -38,9 +39,9 @@ static void		fast_memcpy(void *restrict dstptr,
 		*dst = *src;
 }
 
-void	*ft_memcpy(void *restrict dstptr,
-					const void *restrict srcptr,
-					size_t bytes)
+void			*ft_memcpy(void *restrict dstptr,
+							const void *restrict srcptr,
+							size_t bytes)
 {
 	void		*dst;
 

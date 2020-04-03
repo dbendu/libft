@@ -75,6 +75,7 @@ SRCS_STRING =		ft_strchr.c					\
 					ft_isalpha.c				\
 					ft_isdigit.c				\
 					ft_isspace.c				\
+					ft_strnequ.c
 
 SRCS_UTILS =		gnl.c						\
 					ft_min.c					\

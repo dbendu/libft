@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/03 12:38:56 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:38:57 by user             ###   ########.fr       */
+/*   Created: 2020/04/03 12:38:51 by user              #+#    #+#             */
+/*   Updated: 2020/04/03 12:38:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_string.h"
 
-t_bool	ft_strcmp(const char *str1, const char *str2)
+t_bool		ft_strnequ(const char *s1, const char *s2, size_t symbols)
 {
-	while (*str1 && *str1 == *str2)
+	while (*s1 && symbols)
 	{
-		++str1;
-		++str2;
+		if (*s1 != *s2)
+			return (FALSE);
+		--symbols;
+		++s1;
+		++s2;
 	}
-	return (*str1 - *str2);
+	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/28 10:24:12 by user             ###   ########.fr       */
+/*   Updated: 2020/04/03 12:43:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_vector_s		*vec_expand(t_vector_s *vector)
 
 #ifdef SAFE_MODE
 
-void				vec_pushback(t_vector vector, void *elem)
+void					vec_pushback(t_vector vector, void *elem)
 {
 	t_vector_s		*vec;
 
@@ -57,7 +57,7 @@ void				vec_pushback(t_vector vector, void *elem)
 
 #else
 
-void				vec_pushback(t_vector vector, void *elem)
+void					vec_pushback(t_vector vector, void *elem)
 {
 	t_vector_s		*vec;
 

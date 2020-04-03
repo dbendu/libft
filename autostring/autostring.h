@@ -1,6 +1,7 @@
 #ifndef AUTOSTRING_H
 # define AUTOSTRING_H
 
+# include <stdlib.h>
 # include "ft_memory.h"
 
 typedef char*		string;

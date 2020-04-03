@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:16:56 by dbendu            #+#    #+#             */
-/*   Updated: 2020/02/10 13:47:56 by user             ###   ########.fr       */
+/*   Updated: 2020/04/03 12:34:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	*ft_memchr(const void *memptr, int val, size_t num)
 {
 	register unsigned char	*str;
-	unsigned char			_val;
+	unsigned char			val_;
 
 	str = (unsigned char*)memptr;
-	_val = (unsigned char)val;
+	val_ = (unsigned char)val;
 	while (num)
 	{
-		if (*str == (unsigned char)_val)
+		if (*str == (unsigned char)val_)
 			return (str);
 		++str;
 		--num;

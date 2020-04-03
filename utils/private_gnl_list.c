@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   private_gnl_list.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/03 12:41:05 by user              #+#    #+#             */
+/*   Updated: 2020/04/03 12:41:16 by user             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "private_gnl.h"
 #include "ft_memory.h"
@@ -7,7 +19,6 @@ t_gnl_list			*gnl_create_list(char *str, size_t strlen)
 	t_gnl_list		*new_list;
 
 	new_list = malloc(sizeof(t_gnl_list) + strlen + 1);
-
 	new_list->strlen = strlen;
 	new_list->str = (void*)new_list + sizeof(t_gnl_list);
 	ft_memcpy(new_list->str, str, strlen);

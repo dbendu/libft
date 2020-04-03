@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/06 19:27:51 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/04/03 12:36:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		fast_memset(void *restrict dstptr, char c, size_t bytes)
 void			*ft_memset(void *restrict dest, int c, size_t bytes)
 {
 	void		*dst;
-	
+
 	dst = dest;
 	if (bytes > 128)
 	{

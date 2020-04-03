@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_buf.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/03 12:29:35 by user              #+#    #+#             */
+/*   Updated: 2020/04/03 12:32:49 by user             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_BUF_H
 # define FT_BUF_H
 
@@ -20,6 +32,5 @@ void					buf_add_chr(char chr, size_t times);
 void					buf_add_str(const char *str);
 void					buf_add_strn(const char *str, size_t strlen);
 void					buf_add_line(char *str);
-
 
 #endif

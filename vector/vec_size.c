@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:42 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/28 10:19:46 by user             ###   ########.fr       */
+/*   Updated: 2020/04/03 12:43:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 
 size_t				vec_size(t_vector vector)
 {
+	t_vector_s *vec;
+
 	if (!vector)
 		ft_error("invalid param \"vecptr\": cannot be NULL)",
 				"vec_size", 0);
-	t_vector_s *vec = *(void**)vector - sizeof(t_vector_s);
 	return ((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size;
 	(void)vec;
 }
