@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:47:50 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:47:50 by user             ###   ########.fr       */
+/*   Updated: 2020/04/04 12:13:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static char				*build_error_message(int message_parts,
 											t_vector_sizet parts_lenghts,
 											size_t total_lenght)
 {
-	char		*message;
-	size_t		offset;
-	size_t		cur_part;
+	char			*message;
+	size_t			offset;
+	int				cur_part;
 
 	offset = 0;
 	message = malloc(total_lenght + 1);
