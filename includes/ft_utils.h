@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:30:49 by user             ###   ########.fr       */
+/*   Updated: 2020/04/07 23:55:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ void		ft_error(const char *msg, const char *func, int code);
 int			bytes_order(void);
 int			gnl(const int fd, char **line, t_bool *is_newline_found);
 int			ft_atoi(const char *str);
+char		*ft_itoa(int64_t num, char *str, unsigned radix);
 void		*ft_calloc(size_t elems, size_t elem_size);
 char		*ft_memitoa(int64_t num, char *str,
 						unsigned base, unsigned is_upper);
 char		*convert_num_to_bits_str(void *data, size_t typesize);
-size_t		sizeof_num(int64_t num, unsigned base);
-
 #endif

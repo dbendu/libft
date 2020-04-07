@@ -79,6 +79,7 @@ SRCS_STRING =		ft_strchr.c					\
 					ft_strndup.c
 
 SRCS_UTILS =		gnl.c						\
+					itoa.c						\
 					ft_min.c					\
 					ft_max.c					\
 					ft_swap.c					\
@@ -86,8 +87,6 @@ SRCS_UTILS =		gnl.c						\
 					ft_error.c					\
 					ft_calloc.c					\
 					ft_assert.c					\
-					ft_memitoa.c				\
-					sizeof_num.c				\
 					bytes_order.c				\
 					convert_to_bits.c			\
 					private_gnl_list.c
