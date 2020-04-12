@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buf_flush_to.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:22 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 12:40:09 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/04/12 14:10:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 #ifdef SAFE_MODE
 
-void			buf_flush_to(int fd)
+void			buf_flush_to(int from_fd, int to_fd)
 {
 	t_buf		*buf;
 
-	buf = *get_buf();
+	buf = *get_buf(from_fd);
 	if (!buf)
 		ft_error("buf was not allocated", "buf_flush_to", 0);
 	if (buf->pos)
 	{
-		write(fd, buf->buf, buf->pos);
+		write(to_fd, buf->buf, buf->pos);
 		buf->printed += buf->pos;
 		buf->pos = 0;
 	}
@@ -32,14 +32,14 @@ void			buf_flush_to(int fd)
 
 #else
 
-void			buf_flush_to(int fd)
+void			buf_flush_to(int from_fd, int to_fd)
 {
 	t_buf		*buf;
 
-	buf = *get_buf();
+	buf = *get_buf(from_fd);
 	if (buf->pos)
 	{
-		write(fd, buf->buf, buf->pos);
+		write(to_fd, buf->buf, buf->pos);
 		buf->printed += buf->pos;
 		buf->pos = 0;
 	}

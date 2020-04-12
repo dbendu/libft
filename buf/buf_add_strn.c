@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buf_add_strn.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:23 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:42:28 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/04/12 14:11:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static void		check_args(t_buf *buf, const char *str)
 		ft_error("invalid param \"str\": cannot be NULL", "buf_add_strn", 0);
 }
 
-void			buf_add_strn(const char *str, size_t strlen)
+void			buf_add_strn(int fd, const char *str, size_t strlen)
 {
 	t_buf		*buf;
 
-	buf = *get_buf();
+	buf = *get_buf(fd);
 	check_args(buf, str);
 	if (strlen < buf->size - buf->pos)
 	{
@@ -36,7 +36,7 @@ void			buf_add_strn(const char *str, size_t strlen)
 	}
 	else
 	{
-		buf_flush();
+		buf_flush(fd);
 		if (strlen > buf->size * 0.75)
 		{
 			write(buf->fd, str, strlen);
@@ -52,11 +52,11 @@ void			buf_add_strn(const char *str, size_t strlen)
 
 #else
 
-void			buf_add_strn(const char *str, size_t strlen)
+void			buf_add_strn(int fd, const char *str, size_t strlen)
 {
 	t_buf		*buf;
 
-	buf = *get_buf();
+	buf = *get_buf(fd);
 	if (strlen < buf->size - buf->pos)
 	{
 		ft_memcpy(buf->buf + buf->pos, str, strlen);
@@ -64,7 +64,7 @@ void			buf_add_strn(const char *str, size_t strlen)
 	}
 	else
 	{
-		buf_flush();
+		buf_flush(fd);
 		if (strlen > buf->size * 0.75)
 		{
 			write(buf->fd, str, strlen);

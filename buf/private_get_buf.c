@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   private_get_buf.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:17 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 14:36:43 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/04/12 14:09:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "private_buf.h"
 
-inline t_buf		**get_buf(void)
+inline t_buf		**get_buf(int fd)
 {
-	static t_buf	*buf = NULL;
+	static t_buf	*buf[MAX_BUF_FD] = {NULL};
 
-	return (&buf);
+	return (buf + fd);
 }

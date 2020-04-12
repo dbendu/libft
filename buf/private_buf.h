@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   private_buf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:19 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 12:45:25 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/04/12 14:08:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ft_buf.h"
 
-# define DEFAULT_BUFSIZE		4096
+# define MAX_BUF_FD			10
 
 typedef struct			s_buf
 {
@@ -26,6 +26,6 @@ typedef struct			s_buf
 	char				*buf;
 }						t_buf;
 
-t_buf					**get_buf(void);
+t_buf					**get_buf(int fd);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buf_flush.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:21 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 12:39:21 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/04/12 14:09:47 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 #ifdef SAFE_MODE
 
-void			buf_flush(void)
+void			buf_flush(int fd)
 {
 	t_buf		*buf;
 
-	buf = *get_buf();
+	buf = *get_buf(fd);
 	if (!buf)
 		ft_error("buf was not allocated", "buf_flush", 0);
 	if (buf->pos)
@@ -32,11 +32,11 @@ void			buf_flush(void)
 
 #else
 
-void			buf_flush(void)
+void			buf_flush(int fd)
 {
 	t_buf		*buf;
 
-	buf = *get_buf();
+	buf = *get_buf(fd);
 	if (buf->pos)
 	{
 		write(buf->fd, buf->buf, buf->pos);

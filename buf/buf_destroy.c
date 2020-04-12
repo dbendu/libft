@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:22 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/31 13:49:20 by user             ###   ########.fr       */
+/*   Updated: 2020/04/12 14:10:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 #ifdef SAFE_MODE
 
-size_t			buf_destroy(void)
+size_t			buf_destroy(int fd)
 {
 	t_buf		**buf;
 	size_t		printed_symbols;
 
-	buf = get_buf();
+	buf = get_buf(fd);
 	if (!*buf)
 		ft_error("buf was not allocated", "buf_destroy", 0);
 	printed_symbols = (*buf)->printed;
@@ -32,13 +32,12 @@ size_t			buf_destroy(void)
 
 #else
 
-size_t			buf_destroy(void)
+size_t			buf_destroy(int fd)
 {
 	t_buf		**buf;
 	size_t		printed_symbols;
 
-	buf_flush();
-	buf = get_buf();
+	buf = get_buf(fd);
 	printed_symbols = (*buf)->printed;
 	free(*buf);
 	*buf = NULL;

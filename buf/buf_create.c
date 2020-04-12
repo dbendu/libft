@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buf_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:29:23 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 13:11:50 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/04/12 14:12:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void			buf_create(int fd, size_t bufsize)
 	if (fd < 0)
 		ft_error("invalid param \"fd\": cannot be less than 0",
 				"buf_create", 0);
-	buf = get_buf();
+	else if (fd > MAX_BUF_FD)
+		ft_error("fd more than max allowed fd. Change macros in \
+\"private_buf.h\" file", "buf_create", 0);
+	buf = get_buf(fd);
 	if (*buf)
 		ft_error("buf already allocated",
 				"buf_create", 0);
@@ -45,7 +48,7 @@ void			buf_create(int fd, size_t bufsize)
 {
 	t_buf		**buf;
 
-	buf = get_buf();
+	buf = get_buf(fd);
 	if (!bufsize)
 		bufsize = DEFAULT_BUFSIZE;
 	*buf = malloc(sizeof(t_buf) + bufsize);

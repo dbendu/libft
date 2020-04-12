@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buf_add_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbendu <dbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 02:19:34 by dbendu            #+#    #+#             */
-/*   Updated: 2020/03/07 12:43:15 by dbendu           ###   ########.fr       */
+/*   Updated: 2020/04/12 14:12:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 
 #ifdef SAFE_MODE
 
-void			buf_add_line(char *str)
+void			buf_add_line(int fd, char *str)
 {
 	if (!str)
 		ft_error("invalid param \"str\": cannot be NULL", "buf_add_line", 0);
-	buf_add_str(str);
-	buf_add_chr('\n', 1);
+	buf_add_str(fd, str);
+	buf_add_chr(fd ,'\n', 1);
 }
 
 #else
 
-void			buf_add_line(char *str)
+void			buf_add_line(int fd, char *str)
 {
-	buf_add_str(str);
-	buf_add_chr('\n', 1);
+	buf_add_str(fd, str);
+	buf_add_chr(fd, '\n', 1);
 }
 
 #endif
