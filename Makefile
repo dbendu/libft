@@ -24,7 +24,6 @@ SRCS_BUF =			buf_get.c					\
 					buf_add_str.c				\
 					buf_destroy.c				\
 					buf_add_line.c				\
-					buf_flush_to.c				\
 					buf_add_strn.c				\
 					private_get_buf.c			\
 					buf_printed_count.c
