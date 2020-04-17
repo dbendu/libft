@@ -93,6 +93,7 @@ SRCS_UTILS =		gnl.c						\
 SRCS_VECTOR =		vec_copy.c					\
 					vec_size.c					\
 					vec_create.c				\
+					vec_popback.c				\
 					vec_destroy.c				\
 					vec_reserve.c				\
 					vec_typesize.c				\
@@ -105,6 +106,8 @@ SRCS_WARNING =		warning_add.c				\
 					warning_destroy.c			\
 					warning_print.c				\
 					private_get_warning_list.c
+
+SRCS_ALGORITHM =	all_of.c
 
 #-------------------------------------------------------------------------------
 #							SOURCE DIRECTORIES
@@ -131,6 +134,8 @@ DIR_UTILS_SRCS =		utils
 DIR_VECTOR_SRCS =		vector
 
 DIR_WARNING_SRCS =		warning
+
+DIR_ALGORITHM_SRCS =	algorithm
 
 #-------------------------------------------------------------------------------
 #							OBJECTS DIRECTORIES
@@ -160,6 +165,8 @@ DIR_VECTOR_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_VECTOR_SRCS))
 
 DIR_WARNING_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_WARNING_SRCS))
 
+DIR_ALGORITHM_OBJS =	$(addprefix $(DIR_OBJS)/, $(DIR_ALGORITHM_SRCS))
+
 #-------------------------------------------------------------------------------
 #						CONVERT SOURCES TO OBJECTS
 #-------------------------------------------------------------------------------
@@ -186,6 +193,8 @@ OBJ_VECTOR =		$(addprefix $(DIR_VECTOR_OBJS)/, $(SRCS_VECTOR:.c=.o))
 
 OBJ_WARNING =		$(addprefix $(DIR_WARNING_OBJS)/, $(SRCS_WARNING:.c=.o))
 
+OBJ_ALGORITHM =		$(addprefix $(DIR_ALGORITHM_OBJS)/, $(SRCS_ALGORITHM:.c=.o))
+
 OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_BARR)						\
 					$(OBJ_LIST)						\
@@ -196,7 +205,8 @@ OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_STRING)					\
 					$(OBJ_VECTOR)					\
 					$(OBJ_COMPLEX)					\
-					$(OBJ_WARNING)
+					$(OBJ_WARNING)					\
+					$(OBJ_ALGORITHM)
 
 #-------------------------------------------------------------------------------
 #									INCLUDES
@@ -250,42 +260,46 @@ $(DIR_OBJS):
 	@mkdir -p $(DIR_UTILS_OBJS)
 	@mkdir -p $(DIR_VECTOR_OBJS)
 	@mkdir -p $(DIR_WARNING_OBJS)
+	@mkdir -p $(DIR_ALGORITHM_OBJS)
 
 #-------------------------------------------------------------------------------
 #							COMPILING OBJECT FILES
 #-------------------------------------------------------------------------------
 
-$(DIR_BARR_OBJS)/%.o: $(DIR_BARR_SRCS)/%.c $(INCLUDES)
+$(DIR_BARR_OBJS)/%.o: $(DIR_BARR_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_BUF_OBJS)/%.o: $(DIR_BUF_SRCS)/%.c $(INCLUDES)
+$(DIR_BUF_OBJS)/%.o: $(DIR_BUF_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_COMPLEX_OBJS)/%.o: $(DIR_COMPLEX_SRCS)/%.c $(INCLUDES)
+$(DIR_COMPLEX_OBJS)/%.o: $(DIR_COMPLEX_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_LIST_OBJS)/%.o: $(DIR_LIST_SRCS)/%.c $(INCLUDES)
+$(DIR_LIST_OBJS)/%.o: $(DIR_LIST_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_MATRIX_OBJS)/%.o: $(DIR_MATRIX_SRCS)/%.c $(INCLUDES)
+$(DIR_MATRIX_OBJS)/%.o: $(DIR_MATRIX_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_MEMORY_OBJS)/%.o: $(DIR_MEMORY_SRCS)/%.c $(INCLUDES)
+$(DIR_MEMORY_OBJS)/%.o: $(DIR_MEMORY_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_SORTS_OBJS)/%.o: $(DIR_SORTS_SRCS)/%.c $(INCLUDES)
+$(DIR_SORTS_OBJS)/%.o: $(DIR_SORTS_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_STRING_OBJS)/%.o: $(DIR_STRING_SRCS)/%.c $(INCLUDES)
+$(DIR_STRING_OBJS)/%.o: $(DIR_STRING_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_UTILS_OBJS)/%.o: $(DIR_UTILS_SRCS)/%.c $(INCLUDES)
+$(DIR_UTILS_OBJS)/%.o: $(DIR_UTILS_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_VECTOR_OBJS)/%.o: $(DIR_VECTOR_SRCS)/%.c $(INCLUDES)
+$(DIR_VECTOR_OBJS)/%.o: $(DIR_VECTOR_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
-$(DIR_WARNING_OBJS)/%.o: $(DIR_WARNING_SRCS)/%.c $(INCLUDES)
+$(DIR_WARNING_OBJS)/%.o: $(DIR_WARNING_SRCS)/%.c
+	@gcc $(FLAGS) -o $@ -c $<
+
+$(DIR_ALGORITHM_OBJS)/%.o: $(DIR_ALGORITHM_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 #-------------------------------------------------------------------------------

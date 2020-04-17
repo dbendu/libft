@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:27 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:29:27 by user             ###   ########.fr       */
+/*   Updated: 2020/04/17 12:19:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef unsigned char		t_bool;
 # define FALSE				(0)
 #endif
 
+typedef char*				t_string;
+
 typedef void*				t_vector;
 typedef int*				t_vector_int;
 typedef char*				t_vector_char;
@@ -65,6 +67,7 @@ typedef double*				t_vector_double;
 typedef long*				t_vector_long;
 typedef unsigned*			t_vector_unsigned;
 typedef size_t*				t_vector_sizet;
+typedef char**				t_vector_string;
 
 typedef void*				t_matrix;
 typedef int**				t_matrix_int;
