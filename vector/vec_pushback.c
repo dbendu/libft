@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/04/03 12:43:14 by user             ###   ########.fr       */
+/*   Updated: 2020/04/17 15:05:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_vector_s		*vec_expand(t_vector_s *vector)
 	if (vector->size < 64)
 		new_datasize = vector->size + 16;
 	else
-		new_datasize = vector->size * 1.5;
+		new_datasize = vector->size * VEC_INCREASE;
 	new_vector = vec_create(new_datasize, vector->typesize) -
 															sizeof(t_vector_s);
 	new_vector->size = vector->size;
