@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_popback.c                                      :+:      :+:    :+:   */
+/*   sstream_get.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/17 11:59:29 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 20:14:20 by user             ###   ########.fr       */
+/*   Created: 2020/04/17 19:40:36 by user              #+#    #+#             */
+/*   Updated: 2020/04/17 20:10:51 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_vector.h"
-#include "private_vector.h"
+#include "ft_sstream.h"
 
-inline void	vec_popback(t_vector vector)
+char	sstream_get(t_stringstream *ss)
 {
-	if (((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size)
-		((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size -= 1;
+	char	ret;
+
+	if (ss->is_empty)
+		return (-1);
+	else
+	{
+		ret = ss->str[ss->pos];
+		ss->pos += 1;
+		if (ss->pos == ss->strlen)
+		{
+			free(ss->str);
+			ss->str = NULL;
+			ss->is_empty = TRUE;
+		}
+		return (ret);
+	}
 }

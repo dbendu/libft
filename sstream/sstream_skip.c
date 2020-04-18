@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_popback.c                                      :+:      :+:    :+:   */
+/*   sstream_skip.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/17 11:59:29 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 20:14:20 by user             ###   ########.fr       */
+/*   Created: 2020/04/17 19:44:51 by user              #+#    #+#             */
+/*   Updated: 2020/04/17 21:22:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_vector.h"
-#include "private_vector.h"
+#include "ft_sstream.h"
 
-inline void	vec_popback(t_vector vector)
+void	sstream_skip(t_stringstream *ss, size_t symbols)
 {
-	if (((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size)
-		((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size -= 1;
+	if (ss->is_empty == FALSE)
+	{
+		ss->pos += symbols;
+		if (ss->pos >= ss->strlen)
+		{
+			free(ss->str);
+			ss->str = NULL;
+			ss->is_empty = TRUE;
+		}
+	}
 }

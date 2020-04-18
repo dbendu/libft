@@ -109,6 +109,20 @@ SRCS_WARNING =		warning_add.c				\
 
 SRCS_ALGORITHM =	all_of.c
 
+SRCS_SSTREAM =		sstream_add.c				\
+					sstream_clear.c				\
+					sstream_create.c			\
+					sstream_destroy.c			\
+					sstream_empty.c				\
+					sstream_get.c				\
+					sstream_getn.c				\
+					sstream_peek.c				\
+					sstream_set_separator.c		\
+					sstream_skip.c				\
+					sstream_str.c				\
+					sstream_get_str.c			\
+					sstream_getline.c
+
 #-------------------------------------------------------------------------------
 #							SOURCE DIRECTORIES
 #-------------------------------------------------------------------------------
@@ -136,6 +150,8 @@ DIR_VECTOR_SRCS =		vector
 DIR_WARNING_SRCS =		warning
 
 DIR_ALGORITHM_SRCS =	algorithm
+
+DIR_SSTREAM_SRCS =		sstream
 
 #-------------------------------------------------------------------------------
 #							OBJECTS DIRECTORIES
@@ -167,6 +183,8 @@ DIR_WARNING_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_WARNING_SRCS))
 
 DIR_ALGORITHM_OBJS =	$(addprefix $(DIR_OBJS)/, $(DIR_ALGORITHM_SRCS))
 
+DIR_SSTREAM_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_SSTREAM_SRCS))
+
 #-------------------------------------------------------------------------------
 #						CONVERT SOURCES TO OBJECTS
 #-------------------------------------------------------------------------------
@@ -195,6 +213,8 @@ OBJ_WARNING =		$(addprefix $(DIR_WARNING_OBJS)/, $(SRCS_WARNING:.c=.o))
 
 OBJ_ALGORITHM =		$(addprefix $(DIR_ALGORITHM_OBJS)/, $(SRCS_ALGORITHM:.c=.o))
 
+OBJ_SSTREAM =		$(addprefix $(DIR_SSTREAM_OBJS)/, $(SRCS_SSTREAM:.c=.o))
+
 OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_BARR)						\
 					$(OBJ_LIST)						\
@@ -206,7 +226,8 @@ OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_VECTOR)					\
 					$(OBJ_COMPLEX)					\
 					$(OBJ_WARNING)					\
-					$(OBJ_ALGORITHM)
+					$(OBJ_ALGORITHM)				\
+					$(OBJ_SSTREAM)
 
 #-------------------------------------------------------------------------------
 #									INCLUDES
@@ -261,6 +282,7 @@ $(DIR_OBJS):
 	@mkdir -p $(DIR_VECTOR_OBJS)
 	@mkdir -p $(DIR_WARNING_OBJS)
 	@mkdir -p $(DIR_ALGORITHM_OBJS)
+	@mkdir -p $(DIR_SSTREAM_OBJS)
 
 #-------------------------------------------------------------------------------
 #							COMPILING OBJECT FILES
@@ -300,6 +322,9 @@ $(DIR_WARNING_OBJS)/%.o: $(DIR_WARNING_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_ALGORITHM_OBJS)/%.o: $(DIR_ALGORITHM_SRCS)/%.c
+	@gcc $(FLAGS) -o $@ -c $<
+
+$(DIR_SSTREAM_OBJS)/%.o: $(DIR_SSTREAM_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 #-------------------------------------------------------------------------------
