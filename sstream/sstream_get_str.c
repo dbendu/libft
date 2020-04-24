@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 21:25:33 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 22:03:23 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:34:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void			free_ss(t_stringstream *ss)
 {
 	free(ss->str);
 	ss->str = NULL;
-	ss->is_empty = TRUE;
+	ss->is_empty = true;
 }
 
 static char			*find_begin(char *str, char separator)

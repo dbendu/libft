@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 19:31:36 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 19:59:13 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:34:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		sstream_destroy(t_stringstream *ss)
 {
-	if (ss->is_empty == FALSE)
+	if (ss->is_empty == false)
 		free(ss->str);
 	free(ss);
 }

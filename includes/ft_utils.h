@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/04/07 23:55:21 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:03:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@
 int			ft_min(int a, int b);
 int			ft_max(int a, int b);
 void		ft_swap(void *restrict ptr1, void *restrict ptr2, size_t bytes);
-void		ft_assert(t_bool expr, const char *msg);
+void		ft_assert(bool expr, const char *msg);
 void		ft_error(const char *msg, const char *func, int code);
 int			bytes_order(void);
-int			gnl(const int fd, char **line, t_bool *is_newline_found);
+int			gnl(const int fd, char **line, bool *is_newline_found);
 int			ft_atoi(const char *str);
 char		*ft_itoa(int64_t num, char *str, unsigned radix);
 void		*ft_calloc(size_t elems, size_t elem_size);

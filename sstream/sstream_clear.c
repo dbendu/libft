@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 19:35:35 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 20:03:49 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:34:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	sstream_clear(t_stringstream *ss)
 	{
 		free(ss->str);
 		ss->str = NULL;
-		ss->is_empty = TRUE;
+		ss->is_empty = true;
 	}
 }

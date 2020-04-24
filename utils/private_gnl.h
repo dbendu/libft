@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:40:53 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:40:54 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:04:57 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct			s_gnl_list
 	struct s_gnl_list	*next;
 	struct s_gnl_list	*end;
 	size_t				total_len;
-	t_bool				is_from_sources;
+	bool				is_from_sources;
 }						t_gnl_list;
 
 t_gnl_list				*gnl_create_list(char *str, size_t strlen);

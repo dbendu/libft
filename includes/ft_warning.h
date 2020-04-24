@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:15 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:32:17 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:23:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WARNING				(0)
 # define ERROR					(1)
 
-typedef t_bool			t_warning_type;
+typedef bool			t_warning_type;
 
 void			warning_create(void);
 void			warning_add(t_warning_type type, int message_parts, ...);

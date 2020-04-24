@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 19:32:25 by user              #+#    #+#             */
-/*   Updated: 2020/04/18 11:46:58 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:34:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void				sstream_add(t_stringstream *ss, const char *str)
 		ss->strlen = ft_strlen(str);
 		ss->str = malloc(ss->strlen + 1);
 		ft_memcpy(ss->str, str, ss->strlen + 1);
-		ss->is_empty = FALSE;
+		ss->is_empty = false;
 		ss->pos = 0;
 	}
 	else

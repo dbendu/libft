@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/17 19:29:05 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 21:23:19 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:34:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ t_stringstream		*sstream_create(const char *str)
 	ss->separator = ' ';
 	if (str && str[0] != '\0')
 	{
-		ss->is_empty = FALSE;
+		ss->is_empty = false;
 		ss->strlen = ft_strlen(str);
 		ss->str = copy_str(str, ss->strlen);
 		ss->pos = 0;
 	}
 	else
 	{
-		ss->is_empty = TRUE;
+		ss->is_empty = true;
 		ss->str = NULL;
 	}
 	return (ss);

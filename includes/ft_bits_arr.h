@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:28:56 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:31:14 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:34:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void					barr_set_as_false(t_barr *arr, size_t bit_index);
 void					barr_fill_false(t_barr *arr);
 void					barr_fill_true(t_barr *arr);
 
-t_bool					barr_valueof(t_barr *arr, size_t index);
+bool					barr_valueof(t_barr *arr, size_t index);
 size_t					barr_size(t_barr *arr);
 char					*barr_to_string(t_barr *arr);
 

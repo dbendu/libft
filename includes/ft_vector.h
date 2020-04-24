@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:23 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 12:02:22 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:05:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		vec_destroy(t_vector vecptr);
 void		vec_pushback(t_vector vecptr, void *elem);
 void		vec_popback(t_vector vector);
 
-void		*vec_copy(t_vector vecptr, t_bool save_capacity);
+void		*vec_copy(t_vector vecptr, bool save_capacity);
 void		vec_shrink_to_fit(t_vector vecptr);
 void		vec_reserve(t_vector vecptr, size_t size);
 

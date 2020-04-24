@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:41:05 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:41:16 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:34:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_gnl_list			*gnl_create_list(char *str, size_t strlen)
 	new_list->str[strlen] = '\0';
 	new_list->next = NULL;
 	new_list->end = NULL;
-	new_list->is_from_sources = FALSE;
+	new_list->is_from_sources = false;
 	return (new_list);
 }
 
@@ -38,7 +38,7 @@ t_gnl_list			*gnl_create_list_from_src(char *str, size_t strlen)
 	new_list->strlen = strlen;
 	new_list->next = NULL;
 	new_list->end = NULL;
-	new_list->is_from_sources = TRUE;
+	new_list->is_from_sources = true;
 	return (new_list);
 }
 

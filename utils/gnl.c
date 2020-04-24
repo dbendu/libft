@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:40:33 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:40:33 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:34:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	list_delete(t_gnl_list *list)
 	}
 }
 
-int		gnl(const int fd, char **line, t_bool *is_newline_found)
+int		gnl(const int fd, char **line, bool *is_newline_found)
 {
 	static char		*buf;
 	char			data[GNL_BUF + 1];
@@ -91,7 +91,7 @@ int		gnl(const int fd, char **line, t_bool *is_newline_found)
 	if (check_buf(&buf, &storage, line) == __GNL_FOUNDED)
 	{
 		if (is_newline_found)
-			*is_newline_found = TRUE;
+			*is_newline_found = true;
 		return (GNL_OK);
 	}
 	while ((ret = read(fd, data, GNL_BUF)) > 0)
@@ -102,7 +102,7 @@ int		gnl(const int fd, char **line, t_bool *is_newline_found)
 			gnl_add_node(&storage,
 						gnl_create_list(data, npos ? npos - data : ret));
 		if (is_newline_found)
-			*is_newline_found = npos ? TRUE : FALSE;
+			*is_newline_found = npos ? true : false;
 		if (npos)
 			break ;
 	}

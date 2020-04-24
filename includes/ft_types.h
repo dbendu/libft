@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:27 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 12:19:24 by user             ###   ########.fr       */
+/*   Updated: 2020/04/24 16:00:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdint.h>
 # include <stddef.h>
+# include <stdbool.h>
 
 # if __WORDSIZE == 64
 
@@ -48,14 +49,6 @@ typedef uint_fast8_t		t_int_ws;
 
 typedef unsigned long		t_ul;
 typedef unsigned long long	t_ull;
-typedef unsigned char		t_bool;
-
-#ifndef TRUE
-# define TRUE				(1)
-#endif
-#ifndef FALSE
-# define FALSE				(0)
-#endif
 
 typedef char*				t_string;
 
