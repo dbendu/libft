@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/04/24 16:03:43 by user             ###   ########.fr       */
+/*   Updated: 2020/04/27 21:59:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define GNL_EOF			(0)
 # define GNL_OK				(1)
 # define GNL_BUF			(1024)
+
+# define PI					3.14159265358979323846
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -39,4 +41,7 @@ void		*ft_calloc(size_t elems, size_t elem_size);
 char		*ft_memitoa(int64_t num, char *str,
 						unsigned base, unsigned is_upper);
 char		*convert_num_to_bits_str(void *data, size_t typesize);
+double		to_ang(double rad);
+double		to_rad(double angle);
+
 #endif

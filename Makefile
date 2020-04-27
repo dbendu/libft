@@ -79,6 +79,8 @@ SRCS_STRING =		ft_strchr.c					\
 
 SRCS_UTILS =		gnl.c						\
 					itoa.c						\
+					to_rad.c					\
+					to_ang.c					\
 					ft_min.c					\
 					ft_max.c					\
 					ft_swap.c					\
