@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:42 by dbendu            #+#    #+#             */
-/*   Updated: 2020/04/26 21:48:07 by user             ###   ########.fr       */
+/*   Updated: 2020/04/29 23:00:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #ifdef SAFE_MODE
 
-inline int	vec_typesize(t_vector vector)
+inline int	vec_typesize(const t_vector vector)
 {
 	if (!vector)
 		ft_error("invalid param \"vecptr\": cannot be NULL)",
@@ -25,7 +25,7 @@ inline int	vec_typesize(t_vector vector)
 
 #else
 
-inline int	vec_typesize(t_vector vector)
+inline int	vec_typesize(const t_vector vector)
 {
 	return ((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->typesize;
 }

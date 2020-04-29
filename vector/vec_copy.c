@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:44 by dbendu            #+#    #+#             */
-/*   Updated: 2020/04/24 16:05:52 by user             ###   ########.fr       */
+/*   Updated: 2020/04/29 23:01:04 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #ifdef SAFE_MODE
 
-void			*vec_copy(t_vector vector, bool save_capacity)
+void			*vec_copy(const t_vector vector, bool save_capacity)
 {
 	t_vector_s	*vec;
 	t_vector_s	*new_vector;
@@ -38,7 +38,7 @@ void			*vec_copy(t_vector vector, bool save_capacity)
 
 #else
 
-void			*vec_copy(t_vector vector, bool save_capacity)
+void			*vec_copy(const t_vector vector, bool save_capacity)
 {
 	t_vector_s	*vec;
 	t_vector_s	*new_vector;

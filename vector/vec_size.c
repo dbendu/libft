@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:42 by dbendu            #+#    #+#             */
-/*   Updated: 2020/04/26 21:48:14 by user             ###   ########.fr       */
+/*   Updated: 2020/04/29 23:00:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #ifdef SAFE_MODE
 
-inline int	vec_size(t_vector vector)
+int			vec_size(const t_vector vector)
 {
 	t_vector_s *vec;
 
@@ -28,7 +28,7 @@ inline int	vec_size(t_vector vector)
 
 #else
 
-inline int	vec_size(t_vector vector)
+inline int	vec_size(const t_vector vector)
 {
 	return ((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size;
 }
