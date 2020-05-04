@@ -78,6 +78,7 @@ SRCS_STRING =		ft_strchr.c					\
 					ft_strndup.c
 
 SRCS_UTILS =		gnl.c						\
+					log.c						\
 					itoa.c						\
 					to_rad.c					\
 					to_ang.c					\

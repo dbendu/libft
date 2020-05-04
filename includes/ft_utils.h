@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/04/27 21:59:30 by user             ###   ########.fr       */
+/*   Updated: 2020/05/04 19:55:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ char		*ft_memitoa(int64_t num, char *str,
 char		*convert_num_to_bits_str(void *data, size_t typesize);
 double		to_ang(double rad);
 double		to_rad(double angle);
+void		print_log(const char *msg);
 
 #endif
