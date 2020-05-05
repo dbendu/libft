@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/05/05 18:12:28 by user             ###   ########.fr       */
+/*   Updated: 2020/05/05 18:35:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ char		*convert_num_to_bits_str(void *data, size_t typesize);
 double		to_ang(double rad);
 double		to_rad(double angle);
 int			random_number(int begin, int end);
+void		print_log(const char *msg);
 
 #endif
