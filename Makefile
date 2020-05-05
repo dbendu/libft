@@ -90,7 +90,8 @@ SRCS_UTILS =		gnl.c						\
 					ft_assert.c					\
 					bytes_order.c				\
 					convert_to_bits.c			\
-					private_gnl_list.c
+					private_gnl_list.c			\
+					random_number.c
 
 SRCS_VECTOR =		vec_copy.c					\
 					vec_size.c					\
