@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:35 by user              #+#    #+#             */
-/*   Updated: 2020/04/15 20:36:16 by user             ###   ########.fr       */
+/*   Updated: 2020/05/06 16:35:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "ft_utils.h"
 # include "ft_memory.h"
 # include "ft_string.h"
-# include "mode_libft.h"
 
 void					buf_create(int fd, size_t bufsize);
 size_t					buf_destroy(int fd);

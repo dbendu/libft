@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:28:56 by user              #+#    #+#             */
-/*   Updated: 2020/04/24 16:34:44 by user             ###   ########.fr       */
+/*   Updated: 2020/05/06 16:30:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "ft_types.h"
 # include "ft_utils.h"
-# include "mode_libft.h"
 
 typedef struct s_barr	t_barr;
 

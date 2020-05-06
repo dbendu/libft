@@ -6,31 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:42 by dbendu            #+#    #+#             */
-/*   Updated: 2020/04/29 23:00:53 by user             ###   ########.fr       */
+/*   Updated: 2020/05/06 16:29:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 #include "private_vector.h"
 
-#ifdef SAFE_MODE
-
-int			vec_size(const t_vector vector)
-{
-	t_vector_s *vec;
-
-	if (!vector)
-		ft_error("invalid param \"vecptr\": cannot be NULL)",
-				"vec_size", 0);
-	return ((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size;
-	(void)vec;
-}
-
-#else
-
 inline int	vec_size(const t_vector vector)
 {
 	return ((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size;
 }
-
-#endif

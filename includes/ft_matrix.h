@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:31 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:29:31 by user             ###   ########.fr       */
+/*   Updated: 2020/05/06 16:31:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "ft_utils.h"
 # include "ft_vector.h"
 # include "ft_memory.h"
-# include "mode_libft.h"
 
 void			*matrix_create(size_t rows, size_t cols, size_t type_size);
 void			matrix_destroy(t_matrix matrixptr);
