@@ -6,12 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:40:33 by user              #+#    #+#             */
-/*   Updated: 2020/05/06 14:25:34 by user             ###   ########.fr       */
+/*   Updated: 2020/05/06 20:32:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_utils.h"
 #include "private_gnl.h"
+
+
 
 int		check_buf(char **buf, t_gnl_list **storage, char **line)
 {

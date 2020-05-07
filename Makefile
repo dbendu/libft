@@ -26,7 +26,8 @@ SRCS_BUF =			buf_get.c					\
 					buf_add_line.c				\
 					buf_add_strn.c				\
 					private_get_buf.c			\
-					buf_printed_count.c
+					buf_printed_count.c			\
+					buf_symbols_count.c
 
 SRCS_COMPLEX =		complex_add.c				\
 					complex_div.c				\
