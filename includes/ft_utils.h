@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/05/05 18:35:23 by user             ###   ########.fr       */
+/*   Updated: 2020/05/09 17:08:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ int			bytes_order(void);
 int			gnl(const int fd, char **line, bool *is_newline_found);
 int			ft_atoi(const char *str);
 char		*ft_itoa(int64_t num, char *str, unsigned radix);
+char		*ft_itoa_static(int64_t num, unsigned radix);
 void		*ft_calloc(size_t elems, size_t elem_size);
 char		*ft_memitoa(int64_t num, char *str,
 						unsigned base, unsigned is_upper);
-char		*convert_num_to_bits_str(void *data, size_t typesize);
+char		*num_to_bits(void *numptr, size_t typesize);
 double		to_ang(double rad);
 double		to_rad(double angle);
 int			random_number(int begin, int end);
