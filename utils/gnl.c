@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:40:33 by user              #+#    #+#             */
-/*   Updated: 2020/05/15 18:45:58 by user             ###   ########.fr       */
+/*   Updated: 2020/05/15 21:34:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ ssize_t		gnl_cycle(const int fd, t_gnl_list **list, char *text,
 						const char **nposptr)
 {
 	ssize_t		ret;
-	const char	*npos;
+	const char	*npos = NULL;
 
 	while ((ret = read(fd, text, GNL_BUF)) > 0)
 	{
