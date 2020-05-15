@@ -6,54 +6,85 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:41:05 by user              #+#    #+#             */
-/*   Updated: 2020/04/24 16:34:44 by user             ###   ########.fr       */
+/*   Updated: 2020/05/15 18:44:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "private_gnl.h"
 #include "ft_memory.h"
+#include "ft_string.h"
 
-t_gnl_list			*gnl_create_list(char *str, size_t strlen)
+t_gnl_list	*gnl_list_create(char *str)
 {
-	t_gnl_list		*new_list;
+	const size_t	strlen = ft_strlen(str);
+	t_gnl_list		*list;
 
-	new_list = malloc(sizeof(t_gnl_list) + strlen + 1);
-	new_list->strlen = strlen;
-	new_list->str = (void*)new_list + sizeof(t_gnl_list);
-	ft_memcpy(new_list->str, str, strlen);
-	new_list->str[strlen] = '\0';
-	new_list->next = NULL;
-	new_list->end = NULL;
-	new_list->is_from_sources = false;
-	return (new_list);
+	list = malloc(sizeof(t_gnl_list));
+	list->str = str;
+	list->strlen = strlen;
+	list->next = NULL;
+	return (list);
 }
 
-t_gnl_list			*gnl_create_list_from_src(char *str, size_t strlen)
+void		gnl_list_add(t_gnl_list **list, const char *str, size_t len)
 {
-	t_gnl_list		*new_list;
+	t_gnl_list	*node;
+	t_gnl_list	*iter;
 
-	new_list = malloc(sizeof(t_gnl_list));
-	new_list->str = str;
-	new_list->strlen = strlen;
-	new_list->next = NULL;
-	new_list->end = NULL;
-	new_list->is_from_sources = true;
-	return (new_list);
-}
-
-void				gnl_add_node(t_gnl_list **list, t_gnl_list *node)
-{
-	if (*list)
-	{
-		(*list)->end->next = node;
-		(*list)->end = node;
-		(*list)->total_len += node->strlen;
-	}
+	if (!len)
+		return ;
+	node = malloc(sizeof(t_gnl_list));
+	node->str = malloc(len + 1);
+	ft_memcpy(node->str, str, len);
+	node->str[len] = '\0';
+	node->next = NULL;
+	node->strlen = len;
+	if (!*list)
+		*list = node;
 	else
 	{
-		node->end = node;
-		*list = node;
-		(*list)->total_len = node->strlen;
+		iter = *list;
+		while (iter->next)
+			iter = iter->next;
+		iter->next = node;
+	}
+}
+
+char		*list_to_str(const t_gnl_list *list)
+{
+	size_t				len;
+	size_t				offset;
+	const t_gnl_list	*iter = list;
+	char				*str;
+
+	len = 0;
+	while (iter)
+	{
+		len += iter->strlen;
+		iter = iter->next;
+	}
+	str = malloc(len + 1);
+	offset = 0;
+	while (list)
+	{
+		ft_memcpy(str + offset, list->str, list->strlen);
+		offset += list->strlen;
+		list = list->next;
+	}
+	str[len] = '\0';
+	return (str);
+}
+
+void			destroy_list(t_gnl_list *list)
+{
+	t_gnl_list	*next;
+
+	while (list)
+	{
+		next = list->next;
+		free(list->str);
+		free(list);
+		list = next;
 	}
 }

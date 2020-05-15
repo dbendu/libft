@@ -6,115 +6,92 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:40:33 by user              #+#    #+#             */
-/*   Updated: 2020/05/06 20:32:44 by user             ###   ########.fr       */
+/*   Updated: 2020/05/15 18:45:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_utils.h"
 #include "private_gnl.h"
 
+#define __STR_BUILT	true
 
-
-int		check_buf(char **buf, t_gnl_list **storage, char **line)
+static bool	buf_read(char **buf, char **line,
+					t_gnl_list **list, bool *newline_founded)
 {
-	char		*npos;
-	char		*new_str;
-	size_t		buflen;
+	char *const	npos = ft_strchr(*buf, '\n');
+	char		*new_buf;
 
-	if (!*buf)
-		return (__GNL_NOT_FOUNDED);
-	buflen = ft_strlen(*buf);
-	npos = ft_memchr(*buf, '\n', buflen);
 	if (npos)
 	{
 		*npos = '\0';
 		*line = ft_strdup(*buf);
 		if (npos[1] != '\0')
-			new_str = ft_strdup(npos + 1);
+			new_buf = ft_strdup(npos + 1);
 		else
-			new_str = NULL;
+			new_buf = NULL;
 		free(*buf);
-		*buf = new_str;
-		return (__GNL_FOUNDED);
+		*buf = new_buf;
+		if (newline_founded)
+			*newline_founded = true;
+		return (__STR_BUILT);
 	}
 	else
 	{
-		gnl_add_node(storage, gnl_create_list_from_src(*buf, buflen));
+		*list = gnl_list_create(*buf);
 		*buf = NULL;
-		return (__GNL_NOT_FOUNDED);
+		return (!__STR_BUILT);
 	}
 }
 
-char	*list_to_str(t_gnl_list *list)
+static char	*add_to_buf(char *text, const char *npos, ssize_t ret)
 {
-	char	*str;
-	size_t	offset;
+	const size_t	len = ret - (npos - text) - 1;
+	char			*str;
 
-	if (list)
-	{
-		str = malloc(list->total_len + 1);
-		offset = 0;
-		while (list)
-		{
-			ft_memcpy(str + offset, list->str, list->strlen);
-			offset += list->strlen;
-			list = list->next;
-		}
-		str[offset] = '\0';
-	}
-	else
-		str = ft_strdup("");
+	str = malloc(len + 1);
+	ft_memcpy(str, npos + 1, len);
+	str[len] = '\0';
 	return (str);
 }
 
-void	list_delete(t_gnl_list *list)
+ssize_t		gnl_cycle(const int fd, t_gnl_list **list, char *text,
+						const char **nposptr)
 {
-	t_gnl_list	*temp;
+	ssize_t		ret;
+	const char	*npos;
 
-	while (list)
+	while ((ret = read(fd, text, GNL_BUF)) > 0)
 	{
-		temp = list->next;
-		if (list->is_from_sources)
-			free(list->str);
-		free(list);
-		list = temp;
-	}
-}
-
-int		gnl(const int fd, char **line, bool *is_newline_found)
-{
-	static char		*buf;
-	char			data[GNL_BUF + 1];
-	t_gnl_list		*storage;
-	ssize_t			ret;
-	char			*npos = NULL;
-
-	storage = NULL;
-	if (check_buf(&buf, &storage, line) == __GNL_FOUNDED)
-	{
-		if (is_newline_found)
-			*is_newline_found = true;
-		return (GNL_OK);
-	}
-	while ((ret = read(fd, data, GNL_BUF)) > 0)
-	{
-		data[ret] = '\0';
-		npos = ft_memchr(data, '\n', ret);
-		if (npos != data)
-			gnl_add_node(&storage,
-						gnl_create_list(data, npos ? npos - data : ret));
-		if (is_newline_found)
-			*is_newline_found = npos ? true : false;
+		npos = ft_memchr(text, '\n', ret);
+		if (!npos || (npos - text != ret))
+			gnl_list_add(list, text, npos ? npos - text : ret);
 		if (npos)
 			break ;
 	}
-	if (!ret && !storage)
+	*nposptr = npos;
+	return (ret);
+}
+
+int			gnl(const int fd, char **line, bool *newline_founded)
+{
+	static char	*buf = NULL;
+	ssize_t		ret;
+	t_gnl_list	*list;
+	char		text[GNL_BUF];
+	const char	*npos;
+
+	list = NULL;
+	npos = NULL;
+	if (buf && buf_read(&buf, line, &list, newline_founded) == __STR_BUILT)
+		return (GNL_OK);
+	ret = gnl_cycle(fd, &list, text, &npos);
+	if (!list)
 		return (GNL_EOF);
-	*line = list_to_str(storage);
-	list_delete(storage);
-	if (!npos || npos[1] == '\0')
-		buf = NULL;
-	else
-		buf = ft_strdup(npos + 1);
+	if (npos && ret > 1 && npos[1] != '\0')
+		buf = add_to_buf(text, npos, ret);
+	*line = list_to_str(list);
+	if (newline_founded)
+		*newline_founded = npos ? true : false;
+	destroy_list(list);
 	return (GNL_OK);
 }

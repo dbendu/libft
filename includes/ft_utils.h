@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/05/09 17:08:25 by user             ###   ########.fr       */
+/*   Updated: 2020/05/15 18:41:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 # define GNL_EOF			(0)
 # define GNL_OK				(1)
-# define GNL_BUF			(1024)
 
 # define PI					3.14159265358979323846
 
@@ -34,7 +33,7 @@ void		ft_swap(void *restrict ptr1, void *restrict ptr2, size_t bytes);
 void		ft_assert(bool expr, const char *msg);
 void		ft_error(const char *msg, const char *func, int code);
 int			bytes_order(void);
-int			gnl(const int fd, char **line, bool *is_newline_found);
+int			gnl(const int fd, char **line, bool *newline_found);
 int			ft_atoi(const char *str);
 char		*ft_itoa(int64_t num, char *str, unsigned radix);
 char		*ft_itoa_static(int64_t num, unsigned radix);

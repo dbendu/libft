@@ -6,31 +6,28 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:40:53 by user              #+#    #+#             */
-/*   Updated: 2020/04/24 16:04:57 by user             ###   ########.fr       */
+/*   Updated: 2020/05/15 18:47:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRIVATE_GNL_H
 # define PRIVATE_GNL_H
 
-# include <fcntl.h>
 # include "ft_types.h"
 
-# define __GNL_FOUNDED		(1)
-# define __GNL_NOT_FOUNDED	(0)
+# define GNL_BUF		1024
 
 typedef struct			s_gnl_list
 {
 	char				*str;
 	size_t				strlen;
 	struct s_gnl_list	*next;
-	struct s_gnl_list	*end;
-	size_t				total_len;
-	bool				is_from_sources;
 }						t_gnl_list;
 
-t_gnl_list				*gnl_create_list(char *str, size_t strlen);
-t_gnl_list				*gnl_create_list_from_src(char *str, size_t strlen);
-void					gnl_add_node(t_gnl_list **list, t_gnl_list *node);
+t_gnl_list				*gnl_list_create(char *str);
+void					gnl_list_add(t_gnl_list **list, const char *str,
+									size_t len);
+void					destroy_list(t_gnl_list *list);
+char					*list_to_str(const t_gnl_list *list);
 
 #endif
