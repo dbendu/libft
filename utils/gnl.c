@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:40:33 by user              #+#    #+#             */
-/*   Updated: 2020/05/15 21:34:11 by user             ###   ########.fr       */
+/*   Updated: 2020/05/16 12:56:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static char	*add_to_buf(char *text, const char *npos, ssize_t ret)
 	const size_t	len = ret - (npos - text) - 1;
 	char			*str;
 
+	if (!len)
+		return (NULL);
 	str = malloc(len + 1);
 	ft_memcpy(str, npos + 1, len);
 	str[len] = '\0';
@@ -87,7 +89,7 @@ int			gnl(const int fd, char **line, bool *newline_founded)
 	ret = gnl_cycle(fd, &list, text, &npos);
 	if (!list)
 		return (GNL_EOF);
-	if (npos && ret > 1 && npos[1] != '\0')
+	if (npos && npos - text != ret - 1)
 		buf = add_to_buf(text, npos, ret);
 	*line = list_to_str(list);
 	if (newline_founded)
