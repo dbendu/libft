@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:41:05 by user              #+#    #+#             */
-/*   Updated: 2020/05/15 18:44:35 by user             ###   ########.fr       */
+/*   Updated: 2020/05/18 20:29:54 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		gnl_list_add(t_gnl_list **list, const char *str, size_t len)
 	t_gnl_list	*node;
 	t_gnl_list	*iter;
 
-	if (!len)
+	if (*list && !len)
 		return ;
 	node = malloc(sizeof(t_gnl_list));
 	node->str = malloc(len + 1);
