@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/05/15 18:41:35 by user             ###   ########.fr       */
+/*   Updated: 2020/05/19 14:07:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ double		to_ang(double rad);
 double		to_rad(double angle);
 int			random_number(int begin, int end);
 void		print_log(const char *msg);
+bool		is_dir(const char *filename);
 
 #endif
