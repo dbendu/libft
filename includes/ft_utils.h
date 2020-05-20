@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:25 by user              #+#    #+#             */
-/*   Updated: 2020/05/19 14:07:19 by user             ###   ########.fr       */
+/*   Updated: 2020/05/20 14:33:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,26 @@
 
 int			ft_min(int a, int b);
 int			ft_max(int a, int b);
-void		ft_swap(void *restrict ptr1, void *restrict ptr2, size_t bytes);
+
+void		print_log(const char *msg);
+void		print_err_log(const char *msg);
+void		print_log_fd(const char *msg, int fd);
 void		ft_assert(bool expr, const char *msg);
 void		ft_error(const char *msg, const char *func, int code);
-int			bytes_order(void);
-int			gnl(const int fd, char **line, bool *newline_found);
+
 int			ft_atoi(const char *str);
-char		*ft_itoa(int64_t num, char *str, unsigned radix);
 char		*ft_itoa_static(int64_t num, unsigned radix);
-void		*ft_calloc(size_t elems, size_t elem_size);
-char		*ft_memitoa(int64_t num, char *str,
-						unsigned base, unsigned is_upper);
-char		*num_to_bits(void *numptr, size_t typesize);
+char		*ft_itoa(int64_t num, char *str, unsigned radix);
+
 double		to_ang(double rad);
 double		to_rad(double angle);
-int			random_number(int begin, int end);
-void		print_log(const char *msg);
+
+int			bytes_order(void);
 bool		is_dir(const char *filename);
+int			random_number(int begin, int end);
+void		*ft_calloc(size_t elems, size_t elem_size);
+char		*num_to_bits(void *numptr, size_t typesize);
+int			gnl(const int fd, char **line, bool *newline_found);
+void		ft_swap(void *restrict ptr1, void *restrict ptr2, size_t bytes);
 
 #endif
