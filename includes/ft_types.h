@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:27 by user              #+#    #+#             */
-/*   Updated: 2020/05/20 13:28:01 by user             ###   ########.fr       */
+/*   Updated: 2020/05/28 02:59:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef uint_fast8_t		t_int_ws;
 typedef unsigned long		t_ul;
 typedef unsigned long long	t_ull;
 typedef uint64_t			t_status;
+typedef unsigned char		t_byte;
 
 typedef char*				t_string;
 

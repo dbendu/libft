@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:15 by dbendu            #+#    #+#             */
-/*   Updated: 2020/05/20 15:42:23 by user             ###   ########.fr       */
+/*   Updated: 2020/05/22 15:05:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void			*ft_memcpy(void *restrict dstptr,
 		bytes -= 1;
 	}
 
-	return (dst);
+	return (dstptr);
 }
