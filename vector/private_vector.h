@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:45 by dbendu            #+#    #+#             */
-/*   Updated: 2020/04/26 21:47:23 by user             ###   ########.fr       */
+/*   Updated: 2020/05/28 13:28:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct			s_vector
 	int					size;
 	int					capacity;
 	int					typesize;
-	void				*data;
+	void				*end;
 }						t_vector_s;
 
 #endif

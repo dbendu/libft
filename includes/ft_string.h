@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:28 by user              #+#    #+#             */
-/*   Updated: 2020/04/24 16:03:30 by user             ###   ########.fr       */
+/*   Updated: 2020/05/28 13:04:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "ft_memory.h"
 
 bool		ft_strcmp(const char *str1, const char *str2);
+char		*ft_strcpy(char *dst, const char *src);
 char		*ft_strchr(const char *str, int character);
 char		*ft_strdup(const char *str);
 char		*ft_strndup(const char *src, size_t bytes);

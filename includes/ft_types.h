@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:27 by user              #+#    #+#             */
-/*   Updated: 2020/05/28 02:59:58 by user             ###   ########.fr       */
+/*   Updated: 2020/05/28 14:42:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 #  define WORD_SIZE			64
 #  define WORD_SIZE_BYTES	8
+#  define WORD_POW2			3
 #  define T_INT_WS_MAX		18446744073709551615ull
 typedef uint_fast64_t		t_int_ws;
 
@@ -28,6 +29,7 @@ typedef uint_fast64_t		t_int_ws;
 
 #  define WORD_SIZE			32
 #  define WORD_SIZE_BYTES	4
+#  define WORD_POW2			2
 #  define T_INT_WS_MAX		4294967295ull
 typedef uint_fast32_t		t_int_ws;
 
@@ -35,6 +37,7 @@ typedef uint_fast32_t		t_int_ws;
 
 #  define WORD_SIZE			16
 #  define WORD_SIZE_BYTES	2
+#  define WORD_POW2			1
 #  define T_INT_WS_MAX		65535ull
 typedef uint_fast16_t		t_int_ws;
 
@@ -42,6 +45,7 @@ typedef uint_fast16_t		t_int_ws;
 
 #  define WORD_SIZE			8
 #  define WORD_SIZE_BYTES	1
+#  define WORD_POW2			0
 #  define T_INT_WS_MAX		255ull
 typedef uint_fast8_t		t_int_ws;
 

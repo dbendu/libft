@@ -70,6 +70,7 @@ SRCS_STRING =		ft_strchr.c					\
 					ft_strdup.c					\
 					ft_strequ.c					\
 					ft_strlen.c					\
+					ft_strcpy.c					\
 					ft_isalpha.c				\
 					ft_isdigit.c				\
 					ft_isspace.c				\
@@ -94,7 +95,8 @@ SRCS_UTILS =		gnl.c						\
 					private_gnl_list.c			\
 					random_number.c
 
-SRCS_VECTOR =		vec_copy.c					\
+SRCS_VECTOR =		vec_end.c					\
+					vec_copy.c					\
 					vec_size.c					\
 					vec_create.c				\
 					vec_popback.c				\

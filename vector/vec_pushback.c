@@ -6,29 +6,30 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/05/06 16:23:31 by user             ###   ########.fr       */
+/*   Updated: 2020/05/28 14:13:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 #include "private_vector.h"
 
-static t_vector_s		*vec_expand(t_vector_s *vector)
+static t_vector_s		*vec_expand(t_vector_s *old)
 {
-	t_vector_s		*new_vector;
-	size_t			new_datasize;
+	t_vector_s		*new;
+	int				elems;
 
-	if (vector->size < 64)
-		new_datasize = vector->size + 16;
+	if (old->size < 64)
+		elems = old->size + 16;
 	else
-		new_datasize = vector->size * VEC_INCREASE;
-	new_vector = vec_create(new_datasize, vector->typesize) -
-															sizeof(t_vector_s);
-	new_vector->size = vector->size;
-	new_vector->capacity = new_datasize - vector->size;
-	ft_memcpy(new_vector->data, vector->data, vector->size * vector->typesize);
-	free(vector);
-	return (new_vector);
+		elems = old->size * VEC_INCREASE;
+	new = malloc(sizeof(t_vector_s) + elems * old->typesize);
+	new->size = old->size;
+	new->typesize = old->typesize;
+	new->capacity = elems - old->size;
+	ft_memcpy(new + 1, old + 1, old->size * old->typesize);
+	new->end = (void*)new + sizeof(t_vector_s) + old->size * old->typesize;
+	free(old);
+	return (new);
 }
 
 void					vec_pushback(t_vector vector, void *elem)
@@ -39,10 +40,10 @@ void					vec_pushback(t_vector vector, void *elem)
 	if (!vec->capacity)
 	{
 		vec = vec_expand(vec);
-		*(void**)vector = vec->data;
+		*(void**)vector = vec + 1;
 	}
-	ft_memcpy(vec->data + vec->size * vec->typesize,
-				elem, vec->typesize);
+	ft_memcpy(vec->end, elem, vec->typesize);
+	vec->end += vec->typesize;
 	++vec->size;
 	--vec->capacity;
 }

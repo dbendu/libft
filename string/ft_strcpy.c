@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_create.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 19:31:44 by dbendu            #+#    #+#             */
-/*   Updated: 2020/05/28 13:25:16 by user             ###   ########.fr       */
+/*   Created: 2020/05/28 13:02:45 by user              #+#    #+#             */
+/*   Updated: 2020/05/28 13:04:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_vector.h"
-#include "private_vector.h"
+#include "ft_string.h"
 
-t_vector	vec_create(int elems, int type_size)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	t_vector_s	*vector;
+	char *begin;
 
-	vector = malloc(sizeof(t_vector_s) + elems * type_size);
-	if (!vector)
-		return (NULL);
-	vector->size = 0;
-	vector->capacity = elems;
-	vector->typesize = type_size;
-	vector->end = vector + 1;
-	return (vector + 1);
+	begin = dst;
+	while (*src)
+	{
+		*dst = *src;
+		dst += 1;
+		src += 1;
+	}
+	*dst = '\0';
+	return (begin);
 }
