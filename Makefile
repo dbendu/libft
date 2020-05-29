@@ -65,7 +65,8 @@ SRCS_MEMORY =		ft_memchr.c					\
 
 SRCS_SORTS =		ft_bubble_sort.c
 
-SRCS_STRING =		ft_strchr.c					\
+SRCS_STRING =		ft_ishex.c					\
+					ft_strchr.c					\
 					ft_strcmp.c					\
 					ft_strdup.c					\
 					ft_strequ.c					\
@@ -75,7 +76,9 @@ SRCS_STRING =		ft_strchr.c					\
 					ft_isdigit.c				\
 					ft_isspace.c				\
 					ft_strnequ.c				\
-					ft_strndup.c
+					ft_strndup.c				\
+					ft_tolower.c				\
+					ft_toupper.c
 
 SRCS_UTILS =		gnl.c						\
 					log.c						\
@@ -85,6 +88,7 @@ SRCS_UTILS =		gnl.c						\
 					to_ang.c					\
 					ft_min.c					\
 					ft_max.c					\
+					ft_stoi.c					\
 					ft_swap.c					\
 					ft_atoi.c					\
 					ft_error.c					\
