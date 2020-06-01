@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   private_vector.h                                   :+:      :+:    :+:   */
+/*   dstr_expand.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 19:31:45 by dbendu            #+#    #+#             */
-/*   Updated: 2020/06/01 01:37:08 by user             ###   ########.fr       */
+/*   Created: 2020/06/01 01:53:04 by user              #+#    #+#             */
+/*   Updated: 2020/06/01 12:42:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRIVATE_VECTOR_H
-# define PRIVATE_VECTOR_H
+#include "dstring_private.h"
 
-# include "ft_vector.h"
-
-# define VEC_INCREASE	(1.5)
-
-typedef struct			s_vector
+t_dstr	*dstr_expand(t_dstr *old, int need)
 {
-	int					size;
-	int					capacity;
-	int					typesize;
-	void				*end;
-}						t_vector_s;
+	t_dstr	*new;
 
-#endif
+	need = dstr_align(need);
+	new = malloc(sizeof(t_dstr) + need + 1);
+	new->len = old->len;
+	new->capacity = need - new->len;
+	new->str = (char*)(new + 1);
+	ft_memcpy(new->str, old->str, old->len + 1);
+	free(old);
+	return (new);
+}

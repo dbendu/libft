@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   private_vector.h                                   :+:      :+:    :+:   */
+/*   dstr_create.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 19:31:45 by dbendu            #+#    #+#             */
-/*   Updated: 2020/06/01 01:37:08 by user             ###   ########.fr       */
+/*   Created: 2020/06/01 01:26:28 by user              #+#    #+#             */
+/*   Updated: 2020/06/01 12:40:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRIVATE_VECTOR_H
-# define PRIVATE_VECTOR_H
+#include "ft_dyn_string.h"
+#include "dstring_private.h"
 
-# include "ft_vector.h"
-
-# define VEC_INCREASE	(1.5)
-
-typedef struct			s_vector
+char	*dstr_create(int bytes)
 {
-	int					size;
-	int					capacity;
-	int					typesize;
-	void				*end;
-}						t_vector_s;
+	t_dstr	*dstr;
 
-#endif
+	bytes = dstr_align(bytes);
+	dstr = malloc(sizeof(t_dstr) + bytes + 1);
+	dstr->capacity = bytes;
+	dstr->len = 0;
+	dstr->str = (char*)(dstr + 1);
+	dstr->str[0] = '\0';
+	return (dstr->str);
+}

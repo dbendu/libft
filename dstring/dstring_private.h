@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   private_vector.h                                   :+:      :+:    :+:   */
+/*   dstring_private.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 19:31:45 by dbendu            #+#    #+#             */
-/*   Updated: 2020/06/01 01:37:08 by user             ###   ########.fr       */
+/*   Created: 2020/06/01 01:22:30 by user              #+#    #+#             */
+/*   Updated: 2020/06/01 12:38:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRIVATE_VECTOR_H
-# define PRIVATE_VECTOR_H
+#ifndef DSTRING_PIRVATE_H
+#define DSTRING_PIRVATE_H
 
-# include "ft_vector.h"
+#include <stdlib.h>
+#include "ft_memory.h"
+#include "ft_string.h"
 
-# define VEC_INCREASE	(1.5)
+#define PEACE_SIZE	16
+#define ALIGN_MASK	(PEACE_SIZE - 1)
 
-typedef struct			s_vector
+typedef struct	s_dstr
 {
-	int					size;
-	int					capacity;
-	int					typesize;
-	void				*end;
-}						t_vector_s;
+	int			len;
+	int			capacity;
+	char		*str;
+}				t_dstr;
+
+t_dstr			*dstr_expand(t_dstr *old, int need);
+int				dstr_align(int bytes);
 
 #endif

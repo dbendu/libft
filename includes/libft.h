@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:12 by user              #+#    #+#             */
-/*   Updated: 2020/05/28 13:45:59 by user             ###   ########.fr       */
+/*   Updated: 2020/06/01 12:51:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@
 # include "ft_warning.h"
 # include "ft_algorithm.h"
 # include "ft_sstream.h"
+# include "ft_dyn_string.h"
 
 #endif

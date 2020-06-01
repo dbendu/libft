@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 19:31:44 by dbendu            #+#    #+#             */
-/*   Updated: 2020/05/28 13:25:16 by user             ###   ########.fr       */
+/*   Updated: 2020/06/01 01:38:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,7 @@ t_vector	vec_create(int elems, int type_size)
 	vector->end = vector + 1;
 	return (vector + 1);
 }
+
+/*
+|size, capacity, typesize, elem|->(elems * type_size)
+*/

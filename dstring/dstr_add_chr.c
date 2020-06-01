@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   private_vector.h                                   :+:      :+:    :+:   */
+/*   dstr_add_chr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 19:31:45 by dbendu            #+#    #+#             */
-/*   Updated: 2020/06/01 01:37:08 by user             ###   ########.fr       */
+/*   Created: 2020/06/01 02:23:37 by user              #+#    #+#             */
+/*   Updated: 2020/06/01 12:44:00 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRIVATE_VECTOR_H
-# define PRIVATE_VECTOR_H
+#include "ft_dyn_string.h"
+#include "dstring_private.h"
 
-# include "ft_vector.h"
-
-# define VEC_INCREASE	(1.5)
-
-typedef struct			s_vector
+void	dstr_add_chr(char **str, char symbol)
 {
-	int					size;
-	int					capacity;
-	int					typesize;
-	void				*end;
-}						t_vector_s;
+	t_dstr	*dstr;
 
-#endif
+	dstr = (t_dstr*)((void*)*str - sizeof(t_dstr));
+	if (!dstr->capacity)
+	{
+		dstr = dstr_expand(dstr, dstr->len + 1);
+		*str = dstr->str;
+	}
+	dstr->str[dstr->len] = symbol;
+	dstr->len += 1;
+	dstr->capacity -= 1;
+	dstr->str[dstr->len] = '\0';
+}

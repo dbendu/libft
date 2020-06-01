@@ -133,6 +133,21 @@ SRCS_SSTREAM =		sstream_add.c				\
 					sstream_get_str.c			\
 					sstream_getline.c
 
+SRCS_DSTRING =		dstr_len.c					\
+					dstr_clear.c				\
+					dstr_create.c				\
+					dstr_destroy.c				\
+					dstr_add_str.c				\
+					dstr_add_chr.c				\
+					dstr_add_chrn.c				\
+					dstr_add_strn.c				\
+					dstr_capacity.c				\
+					private_dstr_align.c		\
+					private_dstr_expand.c		\
+					dstr_create_from_src.c		\
+					dstr_create_from_srcn.c
+
+
 #-------------------------------------------------------------------------------
 #							SOURCE DIRECTORIES
 #-------------------------------------------------------------------------------
@@ -162,6 +177,8 @@ DIR_WARNING_SRCS =		warning
 DIR_ALGORITHM_SRCS =	algorithm
 
 DIR_SSTREAM_SRCS =		sstream
+
+DIR_DSTRING_SRCS =		dstring
 
 #-------------------------------------------------------------------------------
 #							OBJECTS DIRECTORIES
@@ -195,6 +212,8 @@ DIR_ALGORITHM_OBJS =	$(addprefix $(DIR_OBJS)/, $(DIR_ALGORITHM_SRCS))
 
 DIR_SSTREAM_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_SSTREAM_SRCS))
 
+DIR_DSTRING_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_DSTRING_SRCS))
+
 #-------------------------------------------------------------------------------
 #						CONVERT SOURCES TO OBJECTS
 #-------------------------------------------------------------------------------
@@ -225,6 +244,8 @@ OBJ_ALGORITHM =		$(addprefix $(DIR_ALGORITHM_OBJS)/, $(SRCS_ALGORITHM:.c=.o))
 
 OBJ_SSTREAM =		$(addprefix $(DIR_SSTREAM_OBJS)/, $(SRCS_SSTREAM:.c=.o))
 
+OBJ_DSTRING =		$(addprefix $(DIR_DSTRING_OBJS)/, $(SRCS_DSTRING:.c=.o))
+
 OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_BARR)						\
 					$(OBJ_LIST)						\
@@ -237,7 +258,8 @@ OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_COMPLEX)					\
 					$(OBJ_WARNING)					\
 					$(OBJ_ALGORITHM)				\
-					$(OBJ_SSTREAM)
+					$(OBJ_SSTREAM)					\
+					$(OBJ_DSTRING)
 
 #-------------------------------------------------------------------------------
 #									INCLUDES
@@ -247,7 +269,8 @@ INCLUDES =			includes				\
 					bits_array				\
 					buf						\
 					vector					\
-					warning
+					warning					\
+					dstring
 
 #-------------------------------------------------------------------------------
 #									FLAGS
@@ -291,6 +314,7 @@ $(DIR_OBJS):
 	@mkdir -p $(DIR_WARNING_OBJS)
 	@mkdir -p $(DIR_ALGORITHM_OBJS)
 	@mkdir -p $(DIR_SSTREAM_OBJS)
+	@mkdir -p $(DIR_DSTRING_OBJS)
 
 #-------------------------------------------------------------------------------
 #							COMPILING OBJECT FILES
@@ -333,6 +357,9 @@ $(DIR_ALGORITHM_OBJS)/%.o: $(DIR_ALGORITHM_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_SSTREAM_OBJS)/%.o: $(DIR_SSTREAM_SRCS)/%.c
+	@gcc $(FLAGS) -o $@ -c $<
+
+$(DIR_DSTRING_OBJS)/%.o: $(DIR_DSTRING_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 #-------------------------------------------------------------------------------

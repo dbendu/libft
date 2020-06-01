@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   private_vector.h                                   :+:      :+:    :+:   */
+/*   dstr_add_chrn.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 19:31:45 by dbendu            #+#    #+#             */
-/*   Updated: 2020/06/01 01:37:08 by user             ###   ########.fr       */
+/*   Created: 2020/06/01 02:28:52 by user              #+#    #+#             */
+/*   Updated: 2020/06/01 12:54:35 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRIVATE_VECTOR_H
-# define PRIVATE_VECTOR_H
+#include "ft_dyn_string.h"
+#include "dstring_private.h"
 
-# include "ft_vector.h"
-
-# define VEC_INCREASE	(1.5)
-
-typedef struct			s_vector
+void	dstr_add_chrn(char **str, char symbol, int times)
 {
-	int					size;
-	int					capacity;
-	int					typesize;
-	void				*end;
-}						t_vector_s;
+	t_dstr	*dstr;
 
-#endif
+	dstr = (t_dstr*)((void*)*str - sizeof(t_dstr));
+	if (dstr->capacity < times)
+	{
+		dstr = dstr_expand(dstr, dstr->len + times);
+		*str = dstr->str;
+	}
+	ft_memset(dstr->str + dstr->len, symbol, times);
+	dstr->capacity -= times;
+	dstr->len += times;
+	dstr->str[dstr->len] = '\0';
+}
