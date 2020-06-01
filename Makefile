@@ -109,7 +109,8 @@ SRCS_VECTOR =		vec_end.c					\
 					vec_typesize.c				\
 					vec_capacity.c				\
 					vec_pushback.c				\
-					vec_shrink_to_fit.c			\
+					vec_destroy2d.c				\
+					vec_shrink_to_fit.c
 
 SRCS_WARNING =		warning_add.c				\
 					warning_create.c			\

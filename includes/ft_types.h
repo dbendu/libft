@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:27 by user              #+#    #+#             */
-/*   Updated: 2020/05/28 14:42:10 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 02:23:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ typedef char*				t_vector_char;
 typedef float*				t_vector_float;
 typedef double*				t_vector_double;
 typedef long*				t_vector_long;
-typedef unsigned*			t_vector_unsigned;
+typedef unsigned*			t_vector_uint;
 typedef size_t*				t_vector_sizet;
-typedef char**				t_vector_string;
+typedef char*				t_vector_str;
+typedef char**				t_vector_dstr;
 
 typedef void*				t_matrix;
 typedef int**				t_matrix_int;
@@ -74,7 +75,8 @@ typedef char**				t_matrix_char;
 typedef float**				t_matrix_float;
 typedef double**			t_matrix_double;
 typedef long**				t_matrix_long;
-typedef unsigned**			t_matrix_unsigned;
+typedef unsigned**			t_matrix_uint;
 typedef size_t**			t_matrix_sizet;
+
 
 #endif

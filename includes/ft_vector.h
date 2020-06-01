@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:23 by user              #+#    #+#             */
-/*   Updated: 2020/05/28 13:33:47 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 02:25:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 t_vector	vec_create(int elems, int type_size);
 void		vec_destroy(t_vector vector);
+void		vec_destroy2d(t_vector vector);
 
 void		vec_pushback(t_vector vector, void *elem);
 void		vec_popback(t_vector vector);
