@@ -6,11 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:43 by dbendu            #+#    #+#             */
-/*   Updated: 2020/05/29 16:13:07 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 13:03:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_memory.h"
+#include "ft_types.h"
 
 void			*ft_memset(void *restrict dstptr, int c, size_t bytes)
 {

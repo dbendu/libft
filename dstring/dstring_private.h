@@ -6,16 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 01:22:30 by user              #+#    #+#             */
-/*   Updated: 2020/06/01 13:06:41 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 13:00:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DSTRING_PRIVATE_H
 # define DSTRING_PRIVATE_H
-
-# include <stdlib.h>
-# include "ft_memory.h"
-# include "ft_string.h"
 
 # define PEACE_SIZE	16
 # define ALIGN_MASK	(PEACE_SIZE - 1)

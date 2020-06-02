@@ -6,12 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/04 14:20:11 by user              #+#    #+#             */
-/*   Updated: 2020/04/04 14:26:26 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 13:04:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_string.h"
+#include "ft_memory.h"
 
 char	*ft_strndup(const char *src, size_t bytes)
 {

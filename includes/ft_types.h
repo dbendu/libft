@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:27 by user              #+#    #+#             */
-/*   Updated: 2020/06/02 02:23:36 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 12:59:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef long*				t_vector_long;
 typedef unsigned*			t_vector_uint;
 typedef size_t*				t_vector_sizet;
 typedef char*				t_vector_str;
+typedef char*				t_dstr;
 typedef char**				t_vector_dstr;
 
 typedef void*				t_matrix;

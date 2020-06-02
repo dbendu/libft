@@ -6,12 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 01:27:55 by user              #+#    #+#             */
-/*   Updated: 2020/06/01 12:41:17 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 13:06:19 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ft_dyn_string.h"
 #include "dstring_private.h"
+#include "ft_memory.h"
+#include "ft_string.h"
 
 char	*dstr_create_from_src(const char *src)
 {

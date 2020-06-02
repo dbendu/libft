@@ -6,12 +6,12 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 20:17:15 by dbendu            #+#    #+#             */
-/*   Updated: 2020/05/29 16:12:53 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 13:02:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdio.h"
 #include "ft_memory.h"
+#include "ft_types.h"
 
 void			*ft_memcpy(void *restrict dstptr,
 							const void *restrict srcptr,

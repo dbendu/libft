@@ -6,15 +6,15 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:28 by user              #+#    #+#             */
-/*   Updated: 2020/05/29 13:53:29 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 13:04:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STRING_H
 # define FT_STRING_H
 
-# include "ft_types.h"
-# include "ft_memory.h"
+#include <stddef.h>
+#include <stdbool.h>
 
 char		*ft_strdup(const char *str);
 char		*ft_strndup(const char *src, size_t bytes);

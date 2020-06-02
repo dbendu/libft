@@ -6,14 +6,14 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:30 by user              #+#    #+#             */
-/*   Updated: 2020/04/03 12:29:31 by user             ###   ########.fr       */
+/*   Updated: 2020/06/02 13:02:21 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MEMORY_H
 # define FT_MEMORY_H
 
-# include "ft_types.h"
+#include <stddef.h>
 
 void	*ft_memchr(const void *mem, int val, size_t bytes);
 void	*ft_memset(void *mem, int c, size_t bytes);
