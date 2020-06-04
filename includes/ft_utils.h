@@ -49,7 +49,6 @@ int			random_number(int begin, int end);
 void		*ft_calloc(size_t elems, size_t elem_size);
 char		*num_to_bits(void *numptr, size_t typesize);
 int			gnl(const int fd, char **line, bool *newline_found);
-void		ft_swap(void *restrict ptr1, void *restrict ptr2, size_t bytes);
 
 int			ft_stoi(const char *str, size_t *pos, int base);
 

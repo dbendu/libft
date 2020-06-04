@@ -24,7 +24,6 @@
 # include "ft_complex.h"
 # include "ft_sorts.h"
 # include "ft_matrix.h"
-# include "ft_bits_arr.h"
 # include "ft_warning.h"
 # include "ft_algorithm.h"
 # include "ft_dyn_string.h"

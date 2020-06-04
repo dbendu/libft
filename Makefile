@@ -4,17 +4,6 @@ NAME =				libft.a
 #								SOURCE FILES
 #-------------------------------------------------------------------------------
 
-SRCS_BARR =			bits_arr_size.c				\
-					bits_arr_create.c			\
-					bits_arr_destroy.c			\
-					bits_arr_valueof.c			\
-					bits_arr_fill_true.c		\
-					bits_arr_to_string.c		\
-					bits_arr_fill_false.c		\
-					bits_arr_set_as_true.c		\
-					bits_arr_set_as_false.c		\
-					private_convert_to_string.c
-
 SRCS_BUF =			buf_get.c					\
 					buf_flush.c					\
 					buf_create.c				\
@@ -63,8 +52,6 @@ SRCS_MEMORY =		ft_memchr.c					\
 					ft_memmove.c				\
 					ft_memrchr.c
 
-SRCS_SORTS =		ft_bubble_sort.c
-
 SRCS_STRING =		ft_ishex.c					\
 					ft_strchr.c					\
 					ft_strcmp.c					\
@@ -89,7 +76,6 @@ SRCS_UTILS =		gnl.c						\
 					ft_min.c					\
 					ft_max.c					\
 					ft_stoi.c					\
-					ft_swap.c					\
 					ft_atoi.c					\
 					ft_error.c					\
 					ft_calloc.c					\
@@ -140,8 +126,6 @@ SRCS_DSTRING =		dstr_len.c					\
 #							SOURCE DIRECTORIES
 #-------------------------------------------------------------------------------
 
-DIR_BARR_SRCS =			bits_array
-
 DIR_BUF_SRCS =			buf
 
 DIR_COMPLEX_SRCS =		complex
@@ -151,8 +135,6 @@ DIR_LIST_SRCS =			list
 DIR_MATRIX_SRCS =		matrix
 
 DIR_MEMORY_SRCS =		memory
-
-DIR_SORTS_SRCS =		sorts
 
 DIR_STRING_SRCS =		string
 
@@ -172,8 +154,6 @@ DIR_DSTRING_SRCS =		dstring
 
 DIR_OBJS =				./objs
 
-DIR_BARR_OBJS =			$(addprefix $(DIR_OBJS)/, $(DIR_BARR_SRCS))
-
 DIR_BUF_OBJS =			$(addprefix $(DIR_OBJS)/, $(DIR_BUF_SRCS))
 
 DIR_COMPLEX_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_COMPLEX_SRCS))
@@ -183,8 +163,6 @@ DIR_LIST_OBJS =			$(addprefix $(DIR_OBJS)/, $(DIR_LIST_SRCS))
 DIR_MATRIX_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_MATRIX_SRCS))
 
 DIR_MEMORY_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_MEMORY_SRCS))
-
-DIR_SORTS_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_SORTS_SRCS))
 
 DIR_STRING_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_STRING_SRCS))
 
@@ -202,8 +180,6 @@ DIR_DSTRING_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_DSTRING_SRCS))
 #						CONVERT SOURCES TO OBJECTS
 #-------------------------------------------------------------------------------
 
-OBJ_BARR =			$(addprefix $(DIR_BARR_OBJS)/, $(SRCS_BARR:.c=.o))
-
 OBJ_BUF =			$(addprefix $(DIR_BUF_OBJS)/, $(SRCS_BUF:.c=.o))
 
 OBJ_COMPLEX =		$(addprefix $(DIR_COMPLEX_OBJS)/, $(SRCS_COMPLEX:.c=.o))
@@ -213,8 +189,6 @@ OBJ_LIST =			$(addprefix $(DIR_LIST_OBJS)/, $(SRCS_LIST:.c=.o))
 OBJ_MATRIX =		$(addprefix $(DIR_MATRIX_OBJS)/, $(SRCS_MATRIX:.c=.o))
 
 OBJ_MEMORY =		$(addprefix $(DIR_MEMORY_OBJS)/, $(SRCS_MEMORY:.c=.o))
-
-OBJ_SORTS =			$(addprefix $(DIR_SORTS_OBJS)/, $(SRCS_SORTS:.c=.o))
 
 OBJ_STRING =		$(addprefix $(DIR_STRING_OBJS)/, $(SRCS_STRING:.c=.o))
 
@@ -229,10 +203,8 @@ OBJ_ALGORITHM =		$(addprefix $(DIR_ALGORITHM_OBJS)/, $(SRCS_ALGORITHM:.c=.o))
 OBJ_DSTRING =		$(addprefix $(DIR_DSTRING_OBJS)/, $(SRCS_DSTRING:.c=.o))
 
 OBJ_ALL =			$(OBJ_BUF)						\
-					$(OBJ_BARR)						\
 					$(OBJ_LIST)						\
 					$(OBJ_UTILS)					\
-					$(OBJ_SORTS)					\
 					$(OBJ_MATRIX)					\
 					$(OBJ_MEMORY)					\
 					$(OBJ_STRING)					\
@@ -247,7 +219,6 @@ OBJ_ALL =			$(OBJ_BUF)						\
 #-------------------------------------------------------------------------------
 
 INCLUDES =			includes				\
-					bits_array				\
 					buf						\
 					vector					\
 					warning					\
@@ -282,13 +253,11 @@ $(NAME): $(DIR_OBJS) $(OBJ_ALL)
 
 $(DIR_OBJS):
 	@mkdir -p $(DIR_OBJS)
-	@mkdir -p $(DIR_BARR_OBJS)
 	@mkdir -p $(DIR_BUF_OBJS)
 	@mkdir -p $(DIR_COMPLEX_OBJS)
 	@mkdir -p $(DIR_LIST_OBJS)
 	@mkdir -p $(DIR_MATRIX_OBJS)
 	@mkdir -p $(DIR_MEMORY_OBJS)
-	@mkdir -p $(DIR_SORTS_OBJS)
 	@mkdir -p $(DIR_STRING_OBJS)
 	@mkdir -p $(DIR_UTILS_OBJS)
 	@mkdir -p $(DIR_VECTOR_OBJS)
@@ -299,9 +268,6 @@ $(DIR_OBJS):
 #-------------------------------------------------------------------------------
 #							COMPILING OBJECT FILES
 #-------------------------------------------------------------------------------
-
-$(DIR_BARR_OBJS)/%.o: $(DIR_BARR_SRCS)/%.c
-	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_BUF_OBJS)/%.o: $(DIR_BUF_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
@@ -316,9 +282,6 @@ $(DIR_MATRIX_OBJS)/%.o: $(DIR_MATRIX_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_MEMORY_OBJS)/%.o: $(DIR_MEMORY_SRCS)/%.c
-	@gcc $(FLAGS) -o $@ -c $<
-
-$(DIR_SORTS_OBJS)/%.o: $(DIR_SORTS_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_STRING_OBJS)/%.o: $(DIR_STRING_SRCS)/%.c
