@@ -15,12 +15,12 @@
 #include "dstring_private.h"
 #include "ft_memory.h"
 
-char	*dstr_to_str(char *dstr)
+char	*dstr_to_str(t_dstr dstr)
 {
-	t_dstr	*dstring;
-	char	*str;
+	t_dstring	*dstring;
+	char		*str;
 
-	dstring = (t_dstr*)(dstr - sizeof(t_dstr));
+	dstring = (t_dstring*)(dstr - sizeof(t_dstring));
 	str = malloc(dstring->len + 1);
 	ft_memcpy(str, dstring->str, dstring->len + 1);
 	free(dstring);

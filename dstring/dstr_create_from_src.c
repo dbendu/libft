@@ -16,14 +16,14 @@
 #include "ft_memory.h"
 #include "ft_string.h"
 
-char	*dstr_create_from_src(const char *src)
+t_dstr	dstr_create_from_src(const char *src)
 {
 	const size_t	srclen = ft_strlen(src);
 	size_t			datasize;
-	t_dstr			*dstr;
+	t_dstring		*dstr;
 
 	datasize = dstr_align(srclen);
-	dstr = malloc(sizeof(t_dstr) + datasize + 1);
+	dstr = malloc(sizeof(t_dstring) + datasize + 1);
 	dstr->capacity = datasize - srclen;
 	dstr->len = srclen;
 	dstr->str = (char*)(dstr + 1);

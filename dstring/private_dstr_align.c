@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dstr_align.c                                       :+:      :+:    :+:   */
+/*   private_dstr_align.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 01:55:06 by user              #+#    #+#             */
-/*   Updated: 2020/06/01 12:42:19 by user             ###   ########.fr       */
+/*   Updated: 2020/06/12 15:50:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dstring_private.h"
 
-inline int		dstr_align(int bytes)
+/*
+** works only with powers of 2!!
+*/
+
+inline int	dstr_align(int bytes)
 {
-	while ((bytes + 1) & ALIGN_MASK)
-		bytes += 1;
-	return (bytes);
+	return (bytes | (PEACE_SIZE - 1));
 }

@@ -14,12 +14,12 @@
 #include "dstring_private.h"
 #include "ft_memory.h"
 
-t_dstr	*dstr_expand(t_dstr *old, int need)
+t_dstring	*dstr_expand(t_dstring *old, int need)
 {
-	t_dstr	*new;
+	t_dstring	*new;
 
 	need = dstr_align(need);
-	new = malloc(sizeof(t_dstr) + need + 1);
+	new = malloc(sizeof(t_dstring) + need + 1);
 	new->len = old->len;
 	new->capacity = need - new->len;
 	new->str = (char*)(new + 1);

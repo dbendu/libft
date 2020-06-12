@@ -15,9 +15,9 @@
 
 void	dstr_clear(char *str)
 {
-	t_dstr	*dstr;
+	t_dstring	*dstr;
 
-	dstr = (t_dstr*)(str - sizeof(t_dstr));
+	dstr = (t_dstring*)(str - sizeof(t_dstring));
 	dstr->str[0] = '\0';
 	dstr->capacity += dstr->len;
 	dstr->len = 0;

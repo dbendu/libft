@@ -16,9 +16,9 @@
 
 void	dstr_add_chrn(char **str, char symbol, int times)
 {
-	t_dstr	*dstr;
+	t_dstring	*dstr;
 
-	dstr = (t_dstr*)((void*)*str - sizeof(t_dstr));
+	dstr = (t_dstring*)((void*)*str - sizeof(t_dstring));
 	if (dstr->capacity < times)
 	{
 		dstr = dstr_expand(dstr, dstr->len + times);

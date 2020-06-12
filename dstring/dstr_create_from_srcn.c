@@ -15,13 +15,13 @@
 #include "dstring_private.h"
 #include "ft_memory.h"
 
-char	*dstr_create_from_srcn(const char *src, int bytes)
+t_dstr	dstr_create_from_srcn(const char *src, int bytes)
 {
 	size_t			datasize;
-	t_dstr			*dstr;
+	t_dstring		*dstr;
 
 	datasize = dstr_align(bytes);
-	dstr = malloc(sizeof(t_dstr) + datasize + 1);
+	dstr = malloc(sizeof(t_dstring) + datasize + 1);
 	dstr->capacity = datasize - bytes;
 	dstr->len = bytes;
 	dstr->str = (char*)(dstr + 1);

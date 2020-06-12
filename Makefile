@@ -107,6 +107,7 @@ SRCS_WARNING =		warning_add.c				\
 SRCS_ALGORITHM =	all_of.c
 
 SRCS_DSTRING =		dstr_len.c					\
+					dstr_copy.c					\
 					dstr_clear.c				\
 					dstr_create.c				\
 					dstr_to_str.c				\

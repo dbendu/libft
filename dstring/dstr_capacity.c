@@ -13,7 +13,7 @@
 #include "ft_dyn_string.h"
 #include "dstring_private.h"
 
-inline int	dstr_capacity(const char *str)
+inline int	dstr_capacity(t_dstr str)
 {
-	return (((t_dstr*)(str - sizeof(t_dstr)))->capacity);
+	return (((t_dstring*)(str - sizeof(t_dstring)))->capacity);
 }

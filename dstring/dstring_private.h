@@ -14,16 +14,15 @@
 # define DSTRING_PRIVATE_H
 
 # define PEACE_SIZE	16
-# define ALIGN_MASK	(PEACE_SIZE - 1)
 
-typedef struct	s_dstr
+typedef struct	s_dstring
 {
 	int			len;
 	int			capacity;
 	char		*str;
-}				t_dstr;
+}				t_dstring;
 
-t_dstr			*dstr_expand(t_dstr *old, int need);
+t_dstring		*dstr_expand(t_dstring *old, int need);
 int				dstr_align(int bytes);
 
 #endif

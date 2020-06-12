@@ -18,9 +18,9 @@
 void	dstr_add_str(char **str, const char *append)
 {
 	const int	applen = ft_strlen(append);
-	t_dstr		*dstr;
+	t_dstring	*dstr;
 
-	dstr = (t_dstr*)((void*)*str - sizeof(t_dstr));
+	dstr = (t_dstring*)((void*)*str - sizeof(t_dstring));
 	if (applen > dstr->capacity)
 	{
 		dstr = dstr_expand(dstr, dstr->len + applen);

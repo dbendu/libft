@@ -13,21 +13,24 @@
 #ifndef FT_DYN_STRING_H
 # define FT_DYN_STRING_H
 
-char	*dstr_create(int bytes);
-char	*dstr_create_from_src(const char *src);
-char	*dstr_create_from_srcn(const char *src, int bytes);
+typedef char*	t_dstr;
 
-void	dstr_add_chr(char **str, char symbol);
-void	dstr_add_chrn(char **str, char symbol, int times);
-void	dstr_add_str(char **str, const char *append);
-void	dstr_add_strn(char **str, const char *append, int bytes);
+t_dstr	dstr_create(int bytes);
+t_dstr	dstr_create_from_src(const char *src);
+t_dstr	dstr_create_from_srcn(const char *src, int bytes);
 
-char	*dstr_to_str(char *dstr);
+void	dstr_add_chr(t_dstr *str, char symbol);
+void	dstr_add_chrn(t_dstr *str, char symbol, int times);
+void	dstr_add_str(t_dstr *str, const char *append);
+void	dstr_add_strn(t_dstr *str, const char *append, int bytes);
 
-int		dstr_len(const char *str);
-int		dstr_capacity(const char *str);
+char	*dstr_to_str(t_dstr dstr);
+t_dstr	dstr_copy(t_dstr dstr);
 
-void	dstr_clear(char *str);
-void	dstr_destroy(char *str);
+int		dstr_len(t_dstr str);
+int		dstr_capacity(t_dstr str);
+
+void	dstr_clear(t_dstr str);
+void	dstr_destroy(t_dstr str);
 
 #endif

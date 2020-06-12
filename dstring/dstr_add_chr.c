@@ -15,9 +15,9 @@
 
 void	dstr_add_chr(char **str, char symbol)
 {
-	t_dstr	*dstr;
+	t_dstring	*dstr;
 
-	dstr = (t_dstr*)((void*)*str - sizeof(t_dstr));
+	dstr = (t_dstring*)((void*)*str - sizeof(t_dstring));
 	if (!dstr->capacity)
 	{
 		dstr = dstr_expand(dstr, dstr->len + 1);

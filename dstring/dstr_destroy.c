@@ -16,5 +16,5 @@
 
 inline void	dstr_destroy(char *str)
 {
-	free(str - sizeof(t_dstr));
+	free(str - sizeof(t_dstring));
 }
