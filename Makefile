@@ -1,5 +1,7 @@
 NAME =				libft.a
 
+NAME_DEBUG =		libftdebug.a
+
 #-------------------------------------------------------------------------------
 #								SOURCE FILES
 #-------------------------------------------------------------------------------
@@ -13,8 +15,7 @@ SRCS_BUF =			buf_get.c					\
 					buf_add_line.c				\
 					buf_add_strn.c				\
 					private_get_buf.c			\
-					buf_printed_count.c			\
-					buf_symbols_count.c
+					buf_printed_count.c
 
 SRCS_COMPLEX =		complex_add.c				\
 					complex_div.c				\
@@ -52,41 +53,32 @@ SRCS_MEMORY =		ft_memchr.c					\
 					ft_memmove.c				\
 					ft_memrchr.c
 
-SRCS_STRING =		ft_ishex.c					\
-					ft_strchr.c					\
+SRCS_STRING =		ft_strchr.c					\
 					ft_strcmp.c					\
 					ft_strdup.c					\
 					ft_strequ.c					\
 					ft_strlen.c					\
-					ft_strcpy.c					\
 					ft_isalpha.c				\
 					ft_isdigit.c				\
 					ft_isspace.c				\
 					ft_strnequ.c				\
-					ft_strndup.c				\
-					ft_tolower.c				\
-					ft_toupper.c
+					ft_strndup.c
 
 SRCS_UTILS =		gnl.c						\
-					log.c						\
 					itoa.c						\
-					is_dir.c					\
 					to_rad.c					\
 					to_ang.c					\
 					ft_min.c					\
 					ft_max.c					\
-					ft_stoi.c					\
 					ft_atoi.c					\
 					ft_error.c					\
 					ft_calloc.c					\
 					ft_assert.c					\
 					bytes_order.c				\
 					convert_to_bits.c			\
-					private_gnl_list.c			\
-					random_number.c
+					private_gnl_list.c
 
-SRCS_VECTOR =		vec_end.c					\
-					vec_copy.c					\
+SRCS_VECTOR =		vec_copy.c					\
 					vec_size.c					\
 					vec_create.c				\
 					vec_popback.c				\
@@ -95,8 +87,8 @@ SRCS_VECTOR =		vec_end.c					\
 					vec_typesize.c				\
 					vec_capacity.c				\
 					vec_pushback.c				\
-					vec_destroy2d.c				\
-					vec_shrink_to_fit.c
+					vec_pushfront.c				\
+					vec_shrink_to_fit.c			\
 
 SRCS_WARNING =		warning_add.c				\
 					warning_create.c			\
@@ -106,26 +98,11 @@ SRCS_WARNING =		warning_add.c				\
 
 SRCS_ALGORITHM =	all_of.c
 
-SRCS_DSTRING =		dstr_len.c					\
-					dstr_copy.c					\
-					dstr_clear.c				\
-					dstr_create.c				\
-					dstr_to_str.c				\
-					dstr_destroy.c				\
-					dstr_add_str.c				\
-					dstr_add_chr.c				\
-					dstr_add_chrn.c				\
-					dstr_add_strn.c				\
-					dstr_capacity.c				\
-					private_dstr_align.c		\
-					private_dstr_expand.c		\
-					dstr_create_from_src.c		\
-					dstr_create_from_srcn.c
-
-
 #-------------------------------------------------------------------------------
 #							SOURCE DIRECTORIES
 #-------------------------------------------------------------------------------
+
+DIR_BARR_SRCS =			bits_array
 
 DIR_BUF_SRCS =			buf
 
@@ -147,13 +124,13 @@ DIR_WARNING_SRCS =		warning
 
 DIR_ALGORITHM_SRCS =	algorithm
 
-DIR_DSTRING_SRCS =		dstring
-
 #-------------------------------------------------------------------------------
 #							OBJECTS DIRECTORIES
 #-------------------------------------------------------------------------------
 
 DIR_OBJS =				./objs
+
+DIR_BARR_OBJS =			$(addprefix $(DIR_OBJS)/, $(DIR_BARR_SRCS))
 
 DIR_BUF_OBJS =			$(addprefix $(DIR_OBJS)/, $(DIR_BUF_SRCS))
 
@@ -175,11 +152,11 @@ DIR_WARNING_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_WARNING_SRCS))
 
 DIR_ALGORITHM_OBJS =	$(addprefix $(DIR_OBJS)/, $(DIR_ALGORITHM_SRCS))
 
-DIR_DSTRING_OBJS =		$(addprefix $(DIR_OBJS)/, $(DIR_DSTRING_SRCS))
-
 #-------------------------------------------------------------------------------
 #						CONVERT SOURCES TO OBJECTS
 #-------------------------------------------------------------------------------
+
+OBJ_BARR =			$(addprefix $(DIR_BARR_OBJS)/, $(SRCS_BARR:.c=.o))
 
 OBJ_BUF =			$(addprefix $(DIR_BUF_OBJS)/, $(SRCS_BUF:.c=.o))
 
@@ -201,9 +178,8 @@ OBJ_WARNING =		$(addprefix $(DIR_WARNING_OBJS)/, $(SRCS_WARNING:.c=.o))
 
 OBJ_ALGORITHM =		$(addprefix $(DIR_ALGORITHM_OBJS)/, $(SRCS_ALGORITHM:.c=.o))
 
-OBJ_DSTRING =		$(addprefix $(DIR_DSTRING_OBJS)/, $(SRCS_DSTRING:.c=.o))
-
 OBJ_ALL =			$(OBJ_BUF)						\
+					$(OBJ_BARR)						\
 					$(OBJ_LIST)						\
 					$(OBJ_UTILS)					\
 					$(OBJ_MATRIX)					\
@@ -212,24 +188,25 @@ OBJ_ALL =			$(OBJ_BUF)						\
 					$(OBJ_VECTOR)					\
 					$(OBJ_COMPLEX)					\
 					$(OBJ_WARNING)					\
-					$(OBJ_ALGORITHM)				\
-					$(OBJ_DSTRING)
+					$(OBJ_ALGORITHM)
 
 #-------------------------------------------------------------------------------
 #									INCLUDES
 #-------------------------------------------------------------------------------
 
 INCLUDES =			includes				\
+					bits_array				\
 					buf						\
 					vector					\
-					warning					\
-					dstring
+					warning
 
 #-------------------------------------------------------------------------------
 #									FLAGS
 #-------------------------------------------------------------------------------
 
-FLAGS =			-g3 -Wall -Werror -Wextra $(addprefix -I , $(INCLUDES))
+FLAGS =			-g -Wall -Werror -Wextra $(addprefix -I , $(INCLUDES))
+
+FLAGS_DEBUG =	-g -Wall -Werror -Wextra $(addprefix -I , $(INCLUDES))
 
 #===============================================================================
 #-------------------------------------------------------------------------------
@@ -254,6 +231,7 @@ $(NAME): $(DIR_OBJS) $(OBJ_ALL)
 
 $(DIR_OBJS):
 	@mkdir -p $(DIR_OBJS)
+	@mkdir -p $(DIR_BARR_OBJS)
 	@mkdir -p $(DIR_BUF_OBJS)
 	@mkdir -p $(DIR_COMPLEX_OBJS)
 	@mkdir -p $(DIR_LIST_OBJS)
@@ -264,11 +242,13 @@ $(DIR_OBJS):
 	@mkdir -p $(DIR_VECTOR_OBJS)
 	@mkdir -p $(DIR_WARNING_OBJS)
 	@mkdir -p $(DIR_ALGORITHM_OBJS)
-	@mkdir -p $(DIR_DSTRING_OBJS)
 
 #-------------------------------------------------------------------------------
 #							COMPILING OBJECT FILES
 #-------------------------------------------------------------------------------
+
+$(DIR_BARR_OBJS)/%.o: $(DIR_BARR_SRCS)/%.c
+	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_BUF_OBJS)/%.o: $(DIR_BUF_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
@@ -298,9 +278,6 @@ $(DIR_WARNING_OBJS)/%.o: $(DIR_WARNING_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 $(DIR_ALGORITHM_OBJS)/%.o: $(DIR_ALGORITHM_SRCS)/%.c
-	@gcc $(FLAGS) -o $@ -c $<
-
-$(DIR_DSTRING_OBJS)/%.o: $(DIR_DSTRING_SRCS)/%.c
 	@gcc $(FLAGS) -o $@ -c $<
 
 #-------------------------------------------------------------------------------

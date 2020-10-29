@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/03 12:29:12 by user              #+#    #+#             */
-/*   Updated: 2020/06/02 13:05:04 by user             ###   ########.fr       */
+/*   Updated: 2020/10/29 15:18:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@
 # include "ft_matrix.h"
 # include "ft_warning.h"
 # include "ft_algorithm.h"
-# include "ft_dyn_string.h"
 
 #endif

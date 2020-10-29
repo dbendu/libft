@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_popback.c                                      :+:      :+:    :+:   */
+/*   mode_libft.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/17 11:59:29 by user              #+#    #+#             */
-/*   Updated: 2020/04/17 20:14:20 by user             ###   ########.fr       */
+/*   Created: 2020/04/03 12:32:37 by user              #+#    #+#             */
+/*   Updated: 2020/10/29 15:07:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_vector.h"
-#include "private_vector.h"
+#ifndef MODE_LIBFT_H
+# define MODE_LIBFT_H
 
-inline void	vec_popback(t_vector vector)
-{
-	if (((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size)
-		((t_vector_s*)(*(void**)vector - sizeof(t_vector_s)))->size -= 1;
-}
+# define XMALLOC_MODE
+// # define SAFE_MODE
+
+#endif

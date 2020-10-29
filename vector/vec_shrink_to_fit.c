@@ -6,12 +6,31 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 15:32:55 by dbendu            #+#    #+#             */
-/*   Updated: 2020/05/06 16:33:57 by user             ###   ########.fr       */
+/*   Updated: 2020/10/29 15:09:49 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 #include "private_vector.h"
+
+#ifdef SAFE_MODE
+
+void			vec_shrink_to_fit(t_vector vector)
+{
+	t_vector	new_vector;
+
+	if (!vector)
+		ft_error("invalid param \"vecptr\": cannot be NULL)",
+				"vec_shrink_to_fit", 0);
+	if (vec_capacity(vector))
+	{
+		new_vector = vec_copy(vector, 0);
+		vec_destroy(vector);
+		*(void**)vector = new_vector;
+	}
+}
+
+#else
 
 void			vec_shrink_to_fit(t_vector vector)
 {
@@ -24,3 +43,5 @@ void			vec_shrink_to_fit(t_vector vector)
 		*(void**)vector = new_vector;
 	}
 }
+
+#endif
